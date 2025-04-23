@@ -3,6 +3,7 @@ import express, { urlencoded } from 'express';
 import session from 'express-session';
 import { routes } from './routes.js';
 import { render } from 'pug';
+import { ok } from 'assert';
 
 const app = express();
 
@@ -14,6 +15,7 @@ const chats = [{
     messages: [] 
 }]
 
+let usersIds = 2;
 
 const users = [{
     username: 'Malthe',
@@ -73,7 +75,25 @@ app.get('/register', (request, response) => {
 })
 
 app.post('/register', (request, response) => {
-    
+    const { username, password, userlevel } = request.body;
+    request.session.isLoggedIn = true;
+
+    const user = {
+        username: username, 
+        password: password,
+        salt: "ccc",
+        dateCreated: Date(),
+        id: ++usersIds,
+        userlevel: userlevel
+    };
+
+    users.push(user);
+
+    response.send({
+        ok: true,
+        redirect: '/'
+    });
+
 })
 
 app.post('/login', (request, response) => {
