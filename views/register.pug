@@ -2,7 +2,7 @@ html
     head 
         title Register Page 
     body 
-        form(action="/register", method="post") 
+        form() 
             label(for="username") Username: 
             input(type="text", name="username", id="username", placeholder="Username")
             br
@@ -13,9 +13,10 @@ html
             input(type="password", name="retypepass", id="retypepass", placeholder="Retype password")
             br
             label(for="userlevel") Userlevel: 
-            select(name="userlevel" )
+            select(name="userlevel" id="userlevel")
                 option(value="1") Niveau 1
                 option(value="2") Niveau 2
                 option(value="3") Niveau 3
             br
-            button(type="submit") Register    
+            button(type="button", id="submitBtn") Register
+script(src="register.js") 
