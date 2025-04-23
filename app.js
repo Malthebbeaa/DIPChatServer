@@ -1,7 +1,8 @@
 import fs from 'fs/promises';
-import express from 'express';
+import express, { urlencoded } from 'express';
 import session from 'express-session';
-import { json, urlencoded } from 'body-parser';
+import { routes } from './routes.js';
+import { render } from 'pug';
 
 const app = express();
 
@@ -14,4 +15,28 @@ app.use(session({
     resave: true
 }));
 app.use(express.json());
+//app.use('/', routes)
 app.use(urlencoded({extended: true}));
+
+
+//routes
+app.get('', (request, response) => {
+    response.render("frontpage");
+})
+
+app.get('/login', (request, response) => {
+    response.render('login', {});
+})
+
+app.get('/logout', (request, response) => {
+    request.session.destroy();
+    response.redirect('');
+})
+
+app.post('/login', (request, response) => {
+    console.log(request.body);
+})
+
+app.listen(8080, () => {
+    console.log("Lytter på 8080...");
+})
