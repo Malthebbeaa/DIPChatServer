@@ -6,10 +6,22 @@ import { render } from 'pug';
 
 const app = express();
 
-const users = {
-    'Malthe' : '1234',
-    'Anders' : '12345'
-};
+const users = [{
+    username: 'Malthe',
+    password: '1234',
+    salt: 'aaa',
+    dateCreated: '2025-04-25',
+    id: '1',
+    userLevel: '3'
+},
+{
+    username: 'Anders',
+    password: '12345',
+    salt: 'bbb',
+    dateCreated: '2025-04-25',
+    id: '2',
+    userLevel: '3'
+}];
 
 //middleware
 app.set('view engine', 'pug');
@@ -55,15 +67,15 @@ app.post('/frontpage', (request, response) => {
         request.session.isLoggedIn = true;
         response.render('frontpage', {knownUser: request.session.isLoggedIn});
     } else {
-        alert("Wrong username or password");
     }
 
 })
 
 function checkuserCredentials(username, password) {
     let credentials = false;
+    let user = users.find(u => u.username === username && u.password === password);
 
-    if(users[username] && users[username] == password) {
+    if(user) {
         credentials = true;
     }
 
