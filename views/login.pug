@@ -2,9 +2,10 @@ html
     head 
         title LoginPage 
     body 
-        form(action="/frontpage", method="POST") 
-            input(type="text", name="username", id="username")
-            input(type="password", name="password", id="password")
-            button(type="submit") Login
+        form() 
+            input(type="text", name="username", class="username")
+            input(type="password", name="password", class="password")
+            button(type="button", class="loginButton") Login
         
         a(href="/register") Register
+    script(src="login.js") 

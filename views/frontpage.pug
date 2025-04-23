@@ -3,3 +3,8 @@ html
         title Frontpage 
     body 
         include includes/header
+            ul
+                each chat in chats
+                    li 
+                        a(href="/chat/" + chat.subject)= chat.subject
+            
