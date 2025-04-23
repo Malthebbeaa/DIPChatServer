@@ -47,7 +47,7 @@ function checkUser(req, res, next) {
 
 //routes
 app.get('', (request, response) => {
-    response.render("frontpage");
+    response.render("frontpage",{knownUser: request.session.isLoggedIn});
 })
 
 app.get('/login', (request, response) => {
@@ -67,14 +67,22 @@ app.post('/register', (request, response) => {
     
 })
 
-app.post('/frontpage', (request, response) => {
+app.post('/login', (request, response) => {
     const username = request.body.username;
     const password = request.body.password;
 
     if(checkuserCredentials(username, password)) {
         request.session.isLoggedIn = true;
-        response.render('frontpage', {knownUser: request.session.isLoggedIn});
+        response.json({
+            status: 'ok',
+            ok: true,
+            redirect: '/'
+        })
     } else {
+        response.json({
+            ok: false,
+            message: "wrong username or password"
+        })
     }
 
 })
