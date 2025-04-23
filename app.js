@@ -59,6 +59,14 @@ app.get('/logout', (request, response) => {
     response.render('frontpage');
 })
 
+app.get('/register', (request, response) => {
+    response.render('register');
+})
+
+app.post('/register', (request, response) => {
+    
+})
+
 app.post('/frontpage', (request, response) => {
     const username = request.body.username;
     const password = request.body.password;
