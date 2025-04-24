@@ -1,11 +1,18 @@
-html 
-    head 
-        title LoginPage 
-    body 
-        form() 
-            input(type="text", name="username", class="username")
-            input(type="password", name="password", class="password")
-            button(type="button", class="loginButton") Login
-        
-        a(href="/register") Register
-    script(src="login.js") 
+doctype html
+html
+  head
+    title Log ind
+    link(rel="stylesheet", href="/css/styles.css")
+  body
+    header
+      h1 Log ind
+    .container
+      form()
+        label(for="username") Brugernavn
+        input(type="text", name="username", class="username", required)
+        label(for="password") Adgangskode
+        input(type="password", name="password", class="password", required)
+        button(type="button", class="loginButton") Log ind
+    script(src="/login.js") 
+    footer
+      p &copy; 2025 ChatForum

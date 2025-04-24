@@ -1,10 +1,31 @@
-html 
-    head
-        title Frontpage 
-    body 
-        include includes/header
-            ul
-                each chat in chats
-                    li 
-                        a(href="/chat/" + chat.subject)= chat.subject
-            
+doctype html
+html
+  head
+    title Chat Forum
+    link(rel="stylesheet", href="/css/styles.css")
+  body
+    header
+      h1 Velkommen til ChatForum
+      include includes/header.pug
+    .container
+      if knownUser
+        h2 Emner
+        each chat in chats 
+          .post
+            .post-header 
+              - const owner = users.find(user => user.username === chat.owner)
+              if owner
+                a.owner(href="/user/" + owner.username) #{owner.username}
+              else
+                span Ukendt bruger
+            .post-content
+              p #{chat.subject}
+            .post-footer
+              span #{chat.createDate}
+              a(href="/chat/" + chat.subject) Kommenter
+      else
+        h2 Velkommen til ChatForum 
+        h3 Log ind eller registrer dig
+        a.button(href="/register") Registrer dig
+    footer
+      p &copy; 2025 ChatForum

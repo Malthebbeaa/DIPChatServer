@@ -1,0 +1,49 @@
+[
+    {
+    "id": "1",
+    "subject": "Hello World",
+    "createDate": "2025-04-23T12:55:07.074Z",
+    "owner": "Anders",
+    "messages": [] 
+    },
+    {
+    "id": "2",
+    "subject": "Test",
+    "createDate": "2025-04-23T12:55:07.074Z",
+    "owner": "Malthe", 
+    "messages": [
+        {
+            "id": "1",
+            "sender": "Malthe",
+            "text": "Hej",
+            "createDate": "2025-04-23T12:55:07.074Z"
+        },
+        {
+            "id": "2",
+            "sender": "Anders",
+            "text": "Hej",
+            "createDate": "2025-04-23T12:55:07.074Z"
+        }
+    ]
+    },
+    {
+    "id": "3",
+    "subject": "Nyt emne",
+    "createDate": "2025-04-23T12:55:07.074Z",
+    "owner": "Malthe",  
+    "messages": [
+        {
+            "id": "1",
+            "sender": "Malthe",
+            "text": "Hej",
+            "createDate": "2025-04-23T12:55:07.074Z"
+        },
+        {
+            "id": "2",
+            "sender": "Anders",
+            "text": "Hej",
+            "createDate": "2025-04-23T12:55:07.074Z"
+        }
+    ]
+    }
+]

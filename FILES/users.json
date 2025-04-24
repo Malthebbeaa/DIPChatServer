@@ -22,5 +22,13 @@
     "dateCreated": "2025-04-24T12:55:07.074Z",
     "id": 3,
     "userlevel": "3"
+  },
+  {
+    "username": "ana",
+    "password": "12345",
+    "salt": "ccc",
+    "dateCreated": "2025-04-24T15:13:26.464Z",
+    "id": 3,
+    "userlevel": "3"
   }
 ]

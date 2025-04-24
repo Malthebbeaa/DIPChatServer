@@ -2,24 +2,18 @@ import fs from 'fs/promises';
 import express, { urlencoded } from 'express';
 import session from 'express-session';
 import { routes } from './routes.js';
-import { json } from 'stream/consumers';
 
 
 const app = express();
 
-const chats = [{
-    id: '1',
-    subject: 'Hej',
-    createDate: Date.now(),
-    owner: 'Anders',
-    messages: [] 
-}]
+
 
 let usersIds = 2;
 
 const usersPath = "./FILES/users.json";
 let usersJson = await fs.readFile(usersPath, 'utf-8')
 const users = JSON.parse(usersJson); //Parse fra JSON til JS
+const chats = JSON.parse(await fs.readFile('./FILES/chats.json', 'utf-8')); //Parse fra JSON til JS
 
 //middleware
 app.set('view engine', 'pug');
@@ -36,7 +30,7 @@ app.use('/chat', requireLogin);
 
 function requireLogin(req, res, next) {
     if(!req.session.isLoggedIn) {
-        res.redirect('/');
+        res.redirect('/login');
     } else {
         next();
     }
@@ -44,8 +38,8 @@ function requireLogin(req, res, next) {
 
 
 //routes
-app.get('', (request, response) => {
-    response.render("frontpage",{knownUser: request.session.isLoggedIn, chats: chats});
+app.get('/', (request, response) => {
+    response.render("frontpage",{knownUser: request.session.isLoggedIn, chats: chats, users: users});
 })
 
 app.get('/login', (request, response) => {
