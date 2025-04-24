@@ -1,0 +1,18 @@
+[
+    {
+        "username": "Malthe",
+        "password": "cbc24c5c4ae34bb422e48699ac94c13928265022f04f22569ed804d27d6b0720",
+        "salt": "aaa",
+        "dateCreated": "2025-04-25",
+        "id": "1",
+        "userLevel": "3"
+    },
+    {
+        "username": "Anders",
+        "password": "23a6d877730b72a35189849911b73c7bab7ab9fba21190d9252ca2da01011049",
+        "salt": "bbb",
+        "dateCreated": "2025-04-25",
+        "id": "2",
+        "userLevel": "3"
+    }
+]
