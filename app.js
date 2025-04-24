@@ -2,6 +2,7 @@ import fs from 'fs/promises';
 import express, { urlencoded } from 'express';
 import session from 'express-session';
 import { routes } from './routes.js';
+import { json } from 'stream/consumers';
 
 
 const app = express();
@@ -63,17 +64,18 @@ app.get('/register', (request, response) => {
 app.post('/register', (request, response) => {
     const { username, password, userlevel } = request.body;
     request.session.isLoggedIn = true;
-
+    const now = new Date();
     const user = {
         username: username, 
         password: password,
         salt: "ccc",
-        dateCreated: Date(),
+        dateCreated: now.toISOString(),
         id: ++usersIds,
         userlevel: userlevel
     };
 
-    users.push(user);
+
+    addUserToFile(user, usersPath);
 
     response.send({
         ok: true,
@@ -111,6 +113,19 @@ function checkuserCredentials(username, password) {
     }
 
     return credentials;
+}
+
+async function addUserToFile(user, filePath) {
+    try {
+        const data = await fs.readFile(filePath, 'utf-8');
+        const users = JSON.parse(data);
+
+        users.push(user);
+
+        await fs.writeFile(filePath, JSON.stringify(users, null, 2));
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 app.listen(8080, () => {
