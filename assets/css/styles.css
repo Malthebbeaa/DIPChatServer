@@ -16,6 +16,8 @@ header {
 }
 
 .container {
+    text-align: center;
+    position: relative;
     max-width: 800px;
     margin: 2rem auto;
     padding: 1rem;
@@ -61,6 +63,7 @@ form {
 }
 
 form label {
+    text-align: left; /* Sørger for, at labels er venstrestillet */
     display: block;
     margin-bottom: 0.5rem;
     font-weight: bold;
@@ -99,6 +102,9 @@ footer {
 
 /* Styling for anchor tags to look like buttons */
 a.button {
+    position: relative;
+    top: 1rem;
+    margin: 0.5rem;
     text-decoration: none;
     display: inline-block;
     padding: 0.5rem 1rem;
@@ -175,6 +181,7 @@ a.chatLink {
     margin-bottom: 1rem;
     font-size: 1rem;
     color: #333;
+    text-align: left; /* Sørger for, at indholdet er venstrestillet */
 }
 
 .post-footer {
@@ -202,5 +209,17 @@ a.owner{
 }
 
 a.owner:hover{
+    color: darkblue;
+}
+
+a.subject{
+    display: inline-block; /* Bevarer inline-styling, men tillader yderligere kontrol */
+    font-weight: bold;
     color: #226288;
+    text-decoration: none;
+    position: left;
+}
+
+a.subject:hover{
+    color: darkblue;
 }

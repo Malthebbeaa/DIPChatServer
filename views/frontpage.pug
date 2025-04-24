@@ -5,8 +5,10 @@ html
     link(rel="stylesheet", href="/css/styles.css")
   body
     header
-      h1 Velkommen til ChatForum
-      include includes/header.pug
+      h1 ChatForum
+      .menu 
+        if knownUser 
+          include includes/header.pug
     .container
       if knownUser
         h2 Emner
@@ -19,13 +21,14 @@ html
               else
                 span Ukendt bruger
             .post-content
-              p #{chat.subject}
+              a.subject(href="/chat/" + chat.subject) #{chat.subject}
             .post-footer
               span #{chat.createDate}
               a(href="/chat/" + chat.subject) Kommenter
       else
         h2 Velkommen til ChatForum 
         h3 Log ind eller registrer dig
+        a.button(href="/login") Login
         a.button(href="/register") Registrer dig
     footer
       p &copy; 2025 ChatForum
