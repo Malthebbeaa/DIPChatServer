@@ -8,7 +8,7 @@ html
       h1 ChatForum
       .menu 
         if knownUser 
-          include includes/header.pug
+          include includes/header
     .container
       if knownUser
         h2 Emner
@@ -17,13 +17,14 @@ html
             .post-header 
               - const owner = users.find(user => user.username === chat.owner)
               if owner
-                a.owner(href="/user/" + owner.username) #{owner.username}
+                a.owner(href="/users/" + owner.username) #{owner.username}
               else
                 span Ukendt bruger
             .post-content
               a.subject(href="/chats/" + chat.id) #{chat.subject}
             .post-footer
-              span #{chat.createDate}
+              -const subjectCreateDato = new Intl.DateTimeFormat('da-DK').format(new Date(chat.createDate))
+              span #{subjectCreateDato}
               a(href="/chats/" + chat.id) Kommenter
       else
         h2 Velkommen til ChatForum 

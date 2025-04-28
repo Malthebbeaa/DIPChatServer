@@ -1,0 +1,12 @@
+html 
+    head 
+        link(rel="stylesheet", href="/css/styles.css") 
+    body
+        header
+            include includes/header
+        .container
+            h2= user.username
+            -const userDato = new Intl.DateTimeFormat('da-DK').format(new Date(user.dateCreated))
+            p= "User created: "  + userDato
+            p= "User Level: " + user.userLevel
+            a.button(href="/users/" + user.username + "/messages") Messages

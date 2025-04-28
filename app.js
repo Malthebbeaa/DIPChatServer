@@ -3,7 +3,7 @@ import express, { urlencoded } from 'express';
 import session from 'express-session';
 import { routes } from './assets/js/routes.js';
 import { addUserToFile } from './assets/js/registerLogic.js'
-import crypto from crypto
+import crypto from 'crypto'
 
 
 const app = express();
@@ -126,4 +126,13 @@ function hashPassword(password, salt) {
 
 app.listen(8080, () => {
     console.log("Lytter på 8080...");
+})
+
+app.get('/users', (request, response) =>{
+    response.render('users', {users: users})
+})
+
+app.get('/users/:id', (request, response)=> {
+    let user = users.find(u => u.username == request.params.id)
+    response.render('userinfo', {user: user})
 })
