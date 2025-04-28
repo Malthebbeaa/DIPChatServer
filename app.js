@@ -36,7 +36,7 @@ app.use((request, response, next) => {
 });
 
 function requireLogin(require, response, next) {
-    const publicPaths = ['/', '/login']
+    const publicPaths = ['/', '/login', '/register']
     if(!require.session.isLoggedIn && !publicPaths.includes(require.path)) {
         response.redirect('/login');
     } else {
@@ -51,6 +51,10 @@ app.get('/', (request, response) => {
 })
 
 app.get('/login', (request, response) => {
+    if(request.session.isLoggedIn) {
+        response.redirect('/');
+        return;
+    }
     response.render('login', {});
 })
 

@@ -5,10 +5,8 @@ html
     link(rel="stylesheet", href="/css/styles.css")
   body
     header
-      h1 ChatForum
-      .menu 
-        if knownUser 
-          include includes/header
+      .menu  
+        include includes/header
     .container
       if knownUser
         h2 Emner
@@ -32,5 +30,3 @@ html
         h3 Log ind eller registrer dig
         a.button(href="/login") Login
         a.button(href="/register") Registrer dig
-    footer
-      p &copy; 2025 ChatForum

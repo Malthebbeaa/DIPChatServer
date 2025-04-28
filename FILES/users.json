@@ -14,5 +14,13 @@
     "dateCreated": "2025-04-28T09:27:22.609Z",
     "id": "9338bed3-78a6-4f90-86c0-58f44416fe96",
     "userlevel": "3"
+  },
+  {
+    "username": "ana",
+    "password": "1605666a07249ec21ea8b11fd09f08bdc591f8f67d5c8d10a5eb06193f55e4bc",
+    "salt": "92782c0b-0e2a-4fbe-8c4f-aca5baaa2052",
+    "dateCreated": "2025-04-28T12:46:26.268Z",
+    "id": "a3850c45-2ee6-47b5-982a-13b3d0e21cb5",
+    "userlevel": "1"
   }
 ]

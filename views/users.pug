@@ -5,7 +5,8 @@ html
         header
             include includes/header
         .container
-            h2= "Userlist"
-            each user in users 
-                li
+            .post-content
+                h2= "Userlist"
+                each user in users 
                     a(href="users/" + user.username) #{user.username}
+                    br
