@@ -1,7 +1,7 @@
 html 
     head 
         title Chat
-        link(rel="stylesheet", href="/css/styles.css")
+        link(rel="stylesheet", href="/css/chats.css")
     body 
         header 
             h1= ChatForum
@@ -9,8 +9,19 @@ html
                 if knownUser 
                     include includes/header.pug
         .container
-            h2= chat.subject
-            each message in messages
-                .message
-                    h3= message.text
+            .owner
+                .banner
+                    - const chatDato = new Intl.DateTimeFormat('da-DK').format(new Date(chat.createDate));
+                    img(src="/user-icon.webp")
+                    p= `${chat.owner} - ${chatDato}`
+                .overskrift 
+                    h2= chat.subject 
+
+            .messages
+                each message in messages
+                    .message
+                        - const sendtDato = new Intl.DateTimeFormat('en-US').format(new Date(message.createDate));
+                        img(src="/user-icon.webp")
+                        p= `${message.sender} - ${sendtDato}`
+                    h3= "Besked: " + message.text
 
