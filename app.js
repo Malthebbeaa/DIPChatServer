@@ -4,10 +4,10 @@ import session from 'express-session';
 import { routes } from './assets/js/routes.js';
 import { addUserToFile } from './assets/js/registerLogic.js'
 import crypto from 'crypto'
+import {v4 as uuidv4} from 'uuid'
 
 
 const app = express();
-let usersIds = 3;
 
 const usersPath = "./FILES/users.json";
 let usersJson = await fs.readFile(usersPath, 'utf-8')
@@ -59,12 +59,13 @@ app.post('/register', (request, response) => {
     const { username, password, userlevel } = request.body;
     request.session.isLoggedIn = true;
     const now = new Date();
+    const salt = uuidv4();
     const user = {
         username: username, 
-        password: password,
-        salt: "ccc",
+        password: hashPassword(password, salt),
+        salt: salt,
         dateCreated: now.toISOString(),
-        id: ++usersIds,
+        id: uuidv4(),
         userlevel: userlevel
     };
 
@@ -76,7 +77,6 @@ app.post('/register', (request, response) => {
         redirect: '/',
         user: user
     });
-    usersIds++;
 })
 
 
@@ -100,9 +100,15 @@ app.post('/login', (request, response) => {
 
 })
 
+
 app.get('/chats/:id', (request, response) => {
     const chat = chats.find(chat => chat.id === request.params.id);
     response.render('chats', {knownUser: request.session.isLoggedIn, chat: chat, messages: chat.messages});
+})
+
+
+app.get('/chats/messages/:id', (request, response) => {
+    
 })
 
 function checkuserCredentials(username, password) {

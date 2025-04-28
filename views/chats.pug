@@ -13,15 +13,17 @@ html
                 .banner
                     - const chatDato = new Intl.DateTimeFormat('da-DK').format(new Date(chat.createDate));
                     img(src="/user-icon.webp")
-                    p= `${chat.owner} - ${chatDato}`
+                    h4= `${chat.owner} - ${chatDato}`
                 .overskrift 
-                    h2= chat.subject 
+                    h2= chat.subject
+                    p= chat.initialMessage
 
             .messages
                 each message in messages
-                    .message
+                    .banner
                         - const sendtDato = new Intl.DateTimeFormat('en-US').format(new Date(message.createDate));
                         img(src="/user-icon.webp")
-                        p= `${message.sender} - ${sendtDato}`
-                    h3= "Besked: " + message.text
+                        h5= `${message.sender} - ${sendtDato}`
+                    .message
+                        p= message.text
 

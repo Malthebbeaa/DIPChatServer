@@ -18,7 +18,7 @@ html
               - const owner = users.find(user => user.username === chat.owner)
               if owner
                 img(src="user-icon.webp")
-                a.owner(href="/user/" + owner.username) #{owner.username}
+                a.owner(href="/users/" + owner.username) #{owner.username}
               else
                 span Ukendt bruger
             .post-content

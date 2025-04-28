@@ -223,7 +223,3 @@ a.subject{
 a.subject:hover{
     color: darkblue;
 }
-
-.message {
-    display: inline;
-}

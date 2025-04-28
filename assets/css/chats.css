@@ -19,10 +19,14 @@
     gap: 10px;
 }
 
-.message img {
-    max-width: 40px;
-    height: auto;
+.message p {
+    padding-left: 30px;
 }
+
+.messages {
+    padding-left: 15px;
+}
+
 
 header {
     position: relative;
@@ -84,4 +88,17 @@ a.loginButton{
     
 }
 
+
+
+.owner {
+    display: flex;
+    align-items: flex-start; /* Juster elementerne til toppen */
+    gap: 10px; /* Mellemrum mellem elementerne */
+    flex-direction: column; /* Placerer elementerne vertikalt */
+    text-align: left; /* Justerer teksten til venstre */
+}
+
+.overskrift {
+    padding-left: 10px;
+}
 

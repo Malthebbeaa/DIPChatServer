@@ -1,42 +1,18 @@
 [
   {
     "username": "Malthe",
-    "password": "cbc24c5c4ae34bb422e48699ac94c13928265022f04f22569ed804d27d6b0720",
-    "salt": "aaa",
-    "dateCreated": "2025-04-23T12:55:07.074Z",
-    "id": 1,
-    "userLevel": "3"
-  },
-  {
-    "username": "Anders",
-    "password": "23a6d877730b72a35189849911b73c7bab7ab9fba21190d9252ca2da01011049",
-    "salt": "bbb",
-    "dateCreated": "2025-04-23T12:55:07.074Z",
-    "id": 2,
-    "userLevel": "3"
-  },
-  {
-    "username": "Michael",
-    "password": "sværtkodeord",
-    "salt": "ccc",
-    "dateCreated": "2025-04-24T12:55:07.074Z",
-    "id": 3,
-    "userlevel": "3"
-  },
-  {
-    "username": "test",
-    "password": "test",
-    "salt": "ccc",
-    "dateCreated": "2025-04-27T12:34:53.693Z",
-    "id": 4,
+    "password": "5326ff7d39430233e28ef46ff2c0fcc350947d7c3c67afddd4cac8ac1145a363",
+    "salt": "4c4f36b0-7818-4fee-95f4-84dec37f6b5c",
+    "dateCreated": "2025-04-28T09:26:34.475Z",
+    "id": "14a6e352-9681-47dc-aefa-87c99c50075b",
     "userlevel": "2"
   },
   {
-    "username": "test2",
-    "password": "test2",
-    "salt": "ccc",
-    "dateCreated": "2025-04-27T12:35:23.464Z",
-    "id": 4,
-    "userlevel": "1"
+    "username": "Anders",
+    "password": "ba1f9da80ea9848d8988d014c69c9eca0f121c2957ad8c94bd48586c915519ab",
+    "salt": "7492d5a9-1b68-4ea6-9701-d0255006f9c7",
+    "dateCreated": "2025-04-28T09:27:22.609Z",
+    "id": "9338bed3-78a6-4f90-86c0-58f44416fe96",
+    "userlevel": "3"
   }
 ]
