@@ -156,7 +156,7 @@ app.get('/users/:id/messages', (request, response)=>{
     let user = users.find(u => u.username == request.params.id)
     let userchats = findUserChats(user) 
     let chat = chats.filter((u) => u.owner == user.username) 
-    response.render('messages',{knownUser: request.session.isLoggedIn, user: user, chat: chat, userchats: userchats})
+    response.render('messages',{knownUser: request.session.isLoggedIn, user: user, chat: chats, userchats: userchats})
 })
 
 

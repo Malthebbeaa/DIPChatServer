@@ -6,9 +6,8 @@ html
         header 
             include includes/header
         .container
-            h2= "Emner"
-            each c in chat 
-                li= c.subject
             h2= "Beskeder"
             each t in userchats
-                li= t.text 
+                - const subject = chat.find(sub => sub.id == t.chatId)
+                p="Emne: " + subject.subject
+                p="Besked: " +t.text 
