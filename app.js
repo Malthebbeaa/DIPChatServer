@@ -109,7 +109,6 @@ app.get('/chats/:id', (request, response) => {
 
 
 app.get('/chats/messages/:id', (request, response) => {
-    const chats = chats;
     const id = request.params.id;
 
     chats.forEach(chat => {
