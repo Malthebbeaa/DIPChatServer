@@ -59,5 +59,13 @@
             "chatId": "552a2b20-948f-46d5-bd70-badad87b8070"
         }
     ]
-    }
+    },
+    {
+        "id": "f54facd9-335e-48b4-9aa6-b472fcf82b00",
+        "subject": "Det er ikke champagne, alt hvad der bobler",
+        "createDate": "2025-04-23T12:55:07.074Z",
+        "owner": "Jeppe K", 
+        "initialMessage": "Jeg må indrømme, at jeg har det lidt anstrengt med begrebet ”bobler”. På en helaftensmenu på en restaurant, det store udtræk med alt, hvad huset formår, altid en rejse ind i et ”univers”, hvor man skal overgive sig til alle vidunderlighederne formedelst mange penge, kan man regne med, at begrebet bobler dækker over profit.", 
+        "messages": []
+        }
 ]

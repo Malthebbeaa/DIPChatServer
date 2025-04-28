@@ -10,8 +10,14 @@ html
                 h2= "Beskeder sendt af " + userInfo.username 
             .post-content
                 - let lastSubject = null
+                h3="Startede diskussioner:" 
+                each discussion in chatOwner
+                    a(href="/chats/" + discussion.id) #{discussion.subject}
+                    p=discussion.initialMessage
+                h3="Beskeder sendt:"
                 each t in userchats
                     - const subject = chat.find(sub => sub.id == t.chatId)
+
                     if subject.subject !== lastSubject
                         p="Emne: " + subject.subject
                         - lastSubject = subject.subject

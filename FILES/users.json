@@ -22,5 +22,13 @@
     "dateCreated": "2025-04-28T12:46:26.268Z",
     "id": "a3850c45-2ee6-47b5-982a-13b3d0e21cb5",
     "userlevel": "1"
+  },
+  {
+    "username": "Jeppe K",
+    "password": "9e4c96b4da877f809cc9a76aa6c717c1d09ee680a6ef829a9a86681628baff5e",
+    "salt": "2f860d68-4273-456c-a63c-c38fb8a3c16e",
+    "dateCreated": "2025-04-28T14:49:04.414Z",
+    "id": "59c4982c-afe3-4004-b7e3-e2d41cf154c4",
+    "userlevel": "2"
   }
 ]
