@@ -21,10 +21,10 @@ html
               else
                 span Ukendt bruger
             .post-content
-              a.subject(href="/chat/" + chat.subject) #{chat.subject}
+              a.subject(href="/chats/" + chat.id) #{chat.subject}
             .post-footer
               span #{chat.createDate}
-              a(href="/chat/" + chat.subject) Kommenter
+              a(href="/chats/" + chat.id) Kommenter
       else
         h2 Velkommen til ChatForum 
         h3 Log ind eller registrer dig

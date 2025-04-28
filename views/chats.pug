@@ -1,0 +1,16 @@
+html 
+    head 
+        title Chat
+        link(rel="stylesheet", href="/css/styles.css")
+    body 
+        header 
+            h1= ChatForum
+            .menu 
+                if knownUser 
+                    include includes/header.pug
+        .container
+            h2= chat.subject
+            each message in messages
+                .message
+                    h3= message.text
+
