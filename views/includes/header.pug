@@ -1,5 +1,7 @@
 .menu 
     if knownUser 
         a.loginButton(href="/logout") Logout
+        if user && user.userlevel == 3
+            a.usersButton(href="/users") Brugere
     else 
         a.loginButton(href="/login") Login 

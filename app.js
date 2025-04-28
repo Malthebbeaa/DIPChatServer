@@ -23,10 +23,17 @@ app.use(session({
     saveUninitialized: true,
     resave: true
 }));
+
 app.use(express.json());
 //app.use('/', routes)
 app.use(urlencoded({extended: true}));
 app.use(requireLogin);
+
+app.use((request, response, next) => {
+    response.locals.knownUser = request.session.isLoggedIn || false;
+    response.locals.user = request.session.user || null;
+    next();
+});
 
 function requireLogin(require, response, next) {
     const publicPaths = ['/', '/login']
@@ -40,7 +47,7 @@ function requireLogin(require, response, next) {
 
 //routes
 app.get('/', (request, response) => {
-    response.render("frontpage",{knownUser: request.session.isLoggedIn, chats: chats, users: users});
+    response.render("frontpage",{chats: chats, users: users});
 })
 
 app.get('/login', (request, response) => {
@@ -82,11 +89,12 @@ app.post('/register', (request, response) => {
 
 
 app.post('/login', (request, response) => {
-    const username = request.body.username;
-    const password = request.body.password;
+    const { username, password } = request.body;
+    const user = users.find(u => u.username === username);
 
     if(checkuserCredentials(username, password)) {
         request.session.isLoggedIn = true;
+        request.session.user = user;
         response.json({
             status: 'ok',
             ok: true,
@@ -104,7 +112,7 @@ app.post('/login', (request, response) => {
 
 app.get('/chats/:id', (request, response) => {
     const chat = chats.find(chat => chat.id === request.params.id);
-    response.render('chats', {knownUser: request.session.isLoggedIn, chat: chat, messages: chat.messages});
+    response.render('chats', {chat: chat, messages: chat.messages});
 })
 
 
@@ -115,7 +123,7 @@ app.get('/chats/messages/:id', (request, response) => {
     chats.forEach(chat => {
         const message = chat.messages.find(message => message.id == id);
         if(message) {
-            response.render('uniqueMessage', {knownUser: request.session.isLoggedIn, chat: chat, message: message})
+            response.render('uniqueMessage', {chat: chat, message: message})
         }
     })
 })
@@ -144,19 +152,18 @@ app.listen(8080, () => {
 })
 
 app.get('/users', (request, response) =>{
-    response.render('users', {knownUser: request.session.isLoggedIn, users: users})
+    response.render('users', {users: users})
 })
 
 app.get('/users/:id', (request, response)=> {
-    let user = users.find(u => u.username == request.params.id)
-    response.render('userinfo', {knownUser: request.session.isLoggedIn, user: user})
+    let userInfo = users.find(u => u.username == request.params.id)
+    response.render('userinfo', {userInfo: userInfo})
 })
 
 app.get('/users/:id/messages', (request, response)=>{
-    let user = users.find(u => u.username == request.params.id)
-    let userchats = findUserChats(user) 
-    let chat = chats.filter((u) => u.owner == user.username) 
-    response.render('messages',{knownUser: request.session.isLoggedIn, user: user, chat: chat, userchats: userchats})
+    let userInfo = users.find(u => u.username == request.params.id)
+    let userchats = findUserChats(userInfo) 
+    response.render('messages',{userInfo: userInfo, chat: chats, userchats: userchats})
 })
 
 

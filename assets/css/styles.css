@@ -1,12 +1,3 @@
-/* Generel styling */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 0;
-    color: #333;
-}
-
 header {
     position: relative;
     background-color: #226288;
@@ -26,7 +17,6 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-
 h1 {
     color: white;
 }
@@ -35,28 +25,9 @@ h2 {
     color: black;
 }
 
-.chat-list {
-    list-style: none;
-    padding: 0;
-}
-
-.chat-list li {
-    padding: 1rem;
-    border-bottom: 1px solid #ddd;
-}
-
-.chat-list li:last-child {
-    border-bottom: none;
-}
-
-chat-list li:hover {
-    background-color: #f9f9f9;
-    cursor: pointer;
-}
-
 form {
-    max-width: 400px; /* Begrænser formularens bredde */
-    margin: 0 auto; /* Centrerer formularen på siden */
+    max-width: 400px;
+    margin: 0 auto;
     padding: 1rem;
     background-color: #fff;
     border-radius: 8px;
@@ -64,14 +35,14 @@ form {
 }
 
 form label {
-    text-align: left; /* Sørger for, at labels er venstrestillet */
+    text-align: left;
     display: block;
     margin-bottom: 0.5rem;
     font-weight: bold;
 }
 
 form input, form select, form button {
-    width: 100%; /* Gør felterne lige så brede som formularen */
+    width: 100%;
     padding: 0.5rem;
     margin-bottom: 1rem;
     border: 1px solid #ddd;
@@ -101,7 +72,6 @@ footer {
     width: 100%;
 }
 
-/* Styling for anchor tags to look like buttons */
 a.button {
     position: relative;
     top: 1rem;
@@ -125,32 +95,43 @@ a.button:active, a.loginButton:active {
     background-color: #3e8e41;
 }
 
-a.loginButton{
+a.loginButton {
     background-color: #4CAF50;
     text-decoration: none;
     color: white;
-    cursor: pointer;    
+    cursor: pointer;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     font-size: 1rem;
     text-align: center;
-    transition: background-color 0.3s ease;
-
-    /* Positioning */
     position: absolute;
     top: 1rem;
     right: 1rem;
-    
+    transition: background-color 0.3s ease;
+}
+
+a.usersButton{
+    background-color: #4CAF50;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    text-align: center;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    transition: background-color 0.3s ease;
 }
 
 a.chatLink {
     text-decoration: none;
     color: #226288;
     font-weight: bold;
-    transition: color 0.3s ease;    
+    transition: color 0.3s ease;
 }
 
-/* Styling for posts to look like Facebook posts */
 .post {
     background-color: white;
     border: 1px solid #ddd;
@@ -181,7 +162,7 @@ a.chatLink {
     margin-bottom: 1rem;
     font-size: 1rem;
     color: #333;
-    text-align: left; /* Sørger for, at indholdet er venstrestillet */
+    text-align: left;
 }
 
 .post-footer {
@@ -202,24 +183,47 @@ a.chatLink {
     color: #4CAF50;
 }
 
-a.owner{
+a.owner {
     font-weight: bold;
     color: #777;
     text-decoration: none;
 }
 
-a.owner:hover{
+a.owner:hover {
     color: darkblue;
 }
 
-a.subject{
-    display: inline-block; /* Bevarer inline-styling, men tillader yderligere kontrol */
+a.subject {
+    display: inline-block;
     font-weight: bold;
     color: #226288;
     text-decoration: none;
-    position: left;
 }
 
-a.subject:hover{
+a.subject:hover {
     color: darkblue;
+}
+
+button {
+    cursor: pointer;
+    position: relative;
+    top: 1rem;
+    margin: 0.5rem;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    border-color: #4CAF50;
+    font-size: 1rem;
+    text-align: center;
+}
+
+button:hover{
+    background-color: #45a049;
+}
+
+button:active {
+    background-color: #3e8e41;
 }

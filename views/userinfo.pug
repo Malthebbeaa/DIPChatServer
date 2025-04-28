@@ -5,8 +5,11 @@ html
         header
             include includes/header
         .container
-            h2= user.username
-            -const userDato = new Intl.DateTimeFormat('da-DK').format(new Date(user.dateCreated))
-            p= "User created: "  + userDato
-            p= "User Level: " + user.userlevel
-            a.button(href="/users/" + user.username + "/messages") Messages
+            .post-header
+                h2= userInfo.username
+            .post-content
+                -const userDato = new Intl.DateTimeFormat('da-DK').format(new Date(userInfo.dateCreated))
+                p= "User created: "  + userDato
+                p= "User Level: " + userInfo.userlevel
+                a.button(href="/users/" + userInfo.username + "/messages") Messages
+                button(type="button" onclick="history.back()") Tilbage
