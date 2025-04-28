@@ -1,0 +1,87 @@
+.banner {
+    display: flex;
+    align-items: center; 
+    gap: 10px;
+}
+
+.banner img {
+    max-width: 50px;
+    height: auto;
+}
+
+.banner p {
+    margin: 0; 
+}
+
+.message {
+    display: flex;
+    align-items: center; 
+    gap: 10px;
+}
+
+.message img {
+    max-width: 40px;
+    height: auto;
+}
+
+header {
+    position: relative;
+    background-color: #226288;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+a.button {
+    position: relative;
+    top: 1rem;
+    margin: 0.5rem;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    font-size: 1rem;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+a.button:hover, a.loginButton:hover {
+    background-color: #45a049;
+}
+
+a.button:active, a.loginButton:active {
+    background-color: #3e8e41;
+}
+
+a.loginButton{
+    background-color: #4CAF50;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;    
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    text-align: center;
+    transition: background-color 0.3s ease;
+
+    /* Positioning */
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    
+}
+
+

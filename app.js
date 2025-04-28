@@ -3,7 +3,7 @@ import express, { urlencoded } from 'express';
 import session from 'express-session';
 import { routes } from './assets/js/routes.js';
 import { addUserToFile } from './assets/js/registerLogic.js'
-import crypto from crypto
+import crypto from 'crypto'
 
 
 const app = express();

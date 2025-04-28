@@ -15,14 +15,20 @@
         {
             "id": "1",
             "sender": "Malthe",
-            "text": "Hej",
+            "text": "Første besked fra Malthe",
             "createDate": "2025-04-23T12:55:07.074Z"
         },
         {
             "id": "2",
             "sender": "Anders",
-            "text": "Hej",
+            "text": "Første besked fra Anders",
             "createDate": "2025-04-23T12:55:07.074Z"
+        },
+        {
+            "id": "3",
+            "sender": "Malthe",
+            "text": "Endnu en besked fra Malthe",
+            "createDate": "2025-04-28T09:53:04.023Z"
         }
     ]
     },
