@@ -1,0 +1,12 @@
+html 
+    head
+        title Chat Forum
+        link(rel="stylesheet", href="/css/styles.css") 
+    body 
+        header 
+            include includes/header
+        .container
+            each c in chat 
+                li= c.subject
+            each t in userchats
+                li= t.text 

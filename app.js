@@ -26,11 +26,12 @@ app.use(session({
 app.use(express.json());
 //app.use('/', routes)
 app.use(urlencoded({extended: true}));
-app.use('/chat', requireLogin);
+app.use(requireLogin);
 
-function requireLogin(req, res, next) {
-    if(!req.session.isLoggedIn) {
-        res.redirect('/login');
+function requireLogin(require, response, next) {
+    const publicPaths = ['/', '/login']
+    if(!require.session.isLoggedIn && !publicPaths.includes(require.path)) {
+        response.redirect('/login');
     } else {
         next();
     }
@@ -129,10 +130,22 @@ app.listen(8080, () => {
 })
 
 app.get('/users', (request, response) =>{
-    response.render('users', {users: users})
+    response.render('users', {knownUser: request.session.isLoggedIn, users: users})
 })
 
 app.get('/users/:id', (request, response)=> {
     let user = users.find(u => u.username == request.params.id)
-    response.render('userinfo', {user: user})
+    response.render('userinfo', {knownUser: request.session.isLoggedIn, user: user})
 })
+
+app.get('/users/:id/messages', (request, response)=>{
+    let user = users.find(u => u.username == request.params.id)
+    let userchats = findUserChats(user) 
+    let chat = chats.filter((u) => u.owner == user.username) 
+    response.render('messages',{knownUser: request.session.isLoggedIn, user: user, chat: chat, userchats: userchats})
+})
+
+
+function findUserChats(user){
+    return chats.flatMap(chat => chat.messages.filter((u)=> u.sender == user.username))
+}
