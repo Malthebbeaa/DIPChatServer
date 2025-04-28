@@ -18,19 +18,22 @@
             "id": "11057151-5ed5-455d-846a-836c79cd8ef7",
             "sender": "Malthe",
             "text": "Første besked fra Malthe",
-            "createDate": "2025-04-23T12:55:07.074Z"
+            "createDate": "2025-04-23T12:55:07.074Z",
+            "chatId": "b7e86bdb-2fcd-4280-887d-3fd1742b764b"
         },
         {
             "id": "d30648ec-f02b-41b4-a8c2-f891425133e4",
             "sender": "Anders",
             "text": "Første besked fra Anders",
-            "createDate": "2025-04-23T12:55:07.074Z"
+            "createDate": "2025-04-23T12:55:07.074Z",
+            "chatId": "b7e86bdb-2fcd-4280-887d-3fd1742b764b"
         },
         {
             "id": "45bb596d-6335-4ce0-bc79-118e30e5fc37",
             "sender": "Malthe",
             "text": "Endnu en besked fra Malthe",
-            "createDate": "2025-04-28T09:53:04.023Z"
+            "createDate": "2025-04-28T09:53:04.023Z",
+            "chatId":"b7e86bdb-2fcd-4280-887d-3fd1742b764b"
         }
     ]
     },
@@ -45,13 +48,15 @@
             "id": "bbe8b075-cbd5-44f6-ba19-ea2144847dc9",
             "sender": "Malthe",
             "text": "Hej",
-            "createDate": "2025-04-23T12:55:07.074Z"
+            "createDate": "2025-04-23T12:55:07.074Z",
+            "chatId": "552a2b20-948f-46d5-bd70-badad87b8070"
         },
         {
             "id": "472b6a4d-44b3-4fc1-8833-0fa168c2803d",
             "sender": "Anders",
             "text": "Hej",
-            "createDate": "2025-04-23T12:55:07.074Z"
+            "createDate": "2025-04-23T12:55:07.074Z",
+            "chatId": "552a2b20-948f-46d5-bd70-badad87b8070"
         }
     ]
     }

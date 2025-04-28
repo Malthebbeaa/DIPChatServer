@@ -109,7 +109,15 @@ app.get('/chats/:id', (request, response) => {
 
 
 app.get('/chats/messages/:id', (request, response) => {
-    
+    const chats = chats;
+    const id = request.params.id;
+
+    chats.forEach(chat => {
+        const message = chat.messages.find(message => message.id == id);
+        if(message) {
+            response.render('uniqueMessage', {knownUser: request.session.isLoggedIn, chat: chat, message: message})
+        }
+    })
 })
 
 function checkuserCredentials(username, password) {
