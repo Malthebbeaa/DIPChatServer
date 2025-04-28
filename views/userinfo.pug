@@ -8,5 +8,5 @@ html
             h2= user.username
             -const userDato = new Intl.DateTimeFormat('da-DK').format(new Date(user.dateCreated))
             p= "User created: "  + userDato
-            p= "User Level: " + user.userLevel
+            p= "User Level: " + user.userlevel
             a.button(href="/users/" + user.username + "/messages") Messages

@@ -115,7 +115,7 @@ app.get('/chats/messages/:id', (request, response) => {
     chats.forEach(chat => {
         const message = chat.messages.find(message => message.id == id);
         if(message) {
-            response
+            response.render('uniqueMessage', {knownUser: request.session.isLoggedIn, chat: chat, message: message})
         }
     })
 })
