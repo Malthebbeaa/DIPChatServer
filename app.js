@@ -2,11 +2,10 @@ import fs from 'fs/promises';
 import express, { urlencoded } from 'express';
 import session from 'express-session';
 import { routes } from './routes.js';
+import crypto from crypto
 
 
 const app = express();
-
-
 
 let usersIds = 2;
 
@@ -100,12 +99,12 @@ app.post('/login', (request, response) => {
 
 function checkuserCredentials(username, password) {
     let credentials = false;
-    let user = users.find(u => u.username === username && u.password === password);
+    const hashedPassword = hashPassword(password, users.find(u => u.username === username).salt);
+    let user = users.find(u => u.username === username && u.password === hashedPassword);
 
     if(user) {
         credentials = true;
     }
-
     return credentials;
 }
 
@@ -121,6 +120,14 @@ async function addUserToFile(user, filePath) {
         console.log(error);
     }
 }
+
+// Funktion til at hashe password
+function hashPassword(password, salt) {
+    const hash = crypto.createHmac('sha256', salt);
+    hash.update(password);
+    return hash.digest('hex');
+}
+
 
 app.listen(8080, () => {
     console.log("Lytter på 8080...");
