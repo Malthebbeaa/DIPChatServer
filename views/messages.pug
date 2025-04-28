@@ -6,7 +6,6 @@ html
         header 
             include includes/header
         .container
-<<<<<<< HEAD
             .post-header
                 h2= "Beskeder sendt af " + userInfo.username 
             .post-content
@@ -20,10 +19,3 @@ html
             button(type="button" onclick="history.back()") Tilbage
         footer
             p &copy; 2025 ChatForum
-=======
-            h2= "Beskeder"
-            each t in userchats
-                - const subject = chat.find(sub => sub.id == t.chatId)
-                p="Emne: " + subject.subject
-                p="Besked: " +t.text 
->>>>>>> d34b0cd349dd5b12896e2b96dfd3d892d4f51c93
