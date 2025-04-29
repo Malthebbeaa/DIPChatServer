@@ -19,6 +19,13 @@
         "text": " nej",
         "createDate": "2025-04-29T13:18:00.651Z",
         "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
+      },
+      {
+        "id": "21da9809-4d89-475e-865b-4fd48bcbe369",
+        "sender": "Anders",
+        "text": " Det er typisk det første program man laver :)",
+        "createDate": "2025-04-29T14:18:48.724Z",
+        "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
       }
     ]
   },
@@ -42,13 +49,6 @@
         "text": "Første besked fra Anders",
         "createDate": "2025-04-23T12:55:07.074Z",
         "chatId": "b7e86bdb-2fcd-4280-887d-3fd1742b764b"
-      },
-      {
-        "id": "45bb596d-6335-4ce0-bc79-118e30e5fc37",
-        "sender": "Malthe",
-        "text": "Endnu en besked fra Malthe",
-        "createDate": "2025-04-28T09:53:04.023Z",
-        "chatId": "b7e86bdb-2fcd-4280-887d-3fd1742b764b"
       }
     ]
   },
@@ -58,22 +58,7 @@
     "createDate": "2025-04-23T12:55:07.074Z",
     "owner": "Malthe",
     "initialMessage": "Vi prøver lige med et nyt emne her",
-    "messages": [
-      {
-        "id": "bbe8b075-cbd5-44f6-ba19-ea2144847dc9",
-        "sender": "Malthe",
-        "text": "Hej",
-        "createDate": "2025-04-23T12:55:07.074Z",
-        "chatId": "552a2b20-948f-46d5-bd70-badad87b8070"
-      },
-      {
-        "id": "472b6a4d-44b3-4fc1-8833-0fa168c2803d",
-        "sender": "Anders",
-        "text": "Hej",
-        "createDate": "2025-04-23T12:55:07.074Z",
-        "chatId": "552a2b20-948f-46d5-bd70-badad87b8070"
-      }
-    ]
+    "messages": []
   },
   {
     "id": "f54facd9-335e-48b4-9aa6-b472fcf82b00",
@@ -81,6 +66,14 @@
     "createDate": "2025-04-23T12:55:07.074Z",
     "owner": "Jeppe K",
     "initialMessage": "Jeg må indrømme, at jeg har det lidt anstrengt med begrebet ”bobler”. På en helaftensmenu på en restaurant, det store udtræk med alt, hvad huset formår, altid en rejse ind i et ”univers”, hvor man skal overgive sig til alle vidunderlighederne formedelst mange penge, kan man regne med, at begrebet bobler dækker over profit.",
-    "messages": []
+    "messages": [
+      {
+        "id": "93f7a35b-6244-4f67-9b6e-d713612246e1",
+        "sender": "Anders",
+        "text": " godt indspark",
+        "createDate": "2025-04-29T18:59:07.050Z",
+        "chatId": "f54facd9-335e-48b4-9aa6-b472fcf82b00"
+      }
+    ]
   }
 ]

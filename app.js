@@ -3,7 +3,7 @@ import express, { urlencoded } from 'express';
 import session from 'express-session';
 import { routes } from './assets/js/routes.js';
 import { addUserToFile } from './assets/js/registerLogic.js'
-import { handleNewMessage } from './assets/js/messageLogic.js'
+import { handleNewMessage, deleteMessage } from './assets/js/messageLogic.js'
 import crypto from 'crypto'
 import {v4 as uuidv4} from 'uuid'
 
@@ -129,6 +129,21 @@ app.get('/chats/messages/:id', (request, response) => {
         if(message) {
             response.render('uniqueMessage', {chat: chat, message: message})
         }
+    })
+})
+
+app.delete('/chats/messages/:id', (request, response) => {
+    const id = request.params.id;
+
+    chats.forEach(chat => {
+        const message = chat.messages.find(message => message.id == id);
+        if(message) {
+            deleteMessage(message, chat.id, './FILES/chats.json', 'utf-8')
+        }
+    })
+    response.json({
+        status: 'ok',
+        ok: true,
     })
 })
 

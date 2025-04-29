@@ -1,5 +1,7 @@
 const commentBtn = document.getElementById('commentBtn');
 const commentInput = document.getElementById('kommentar');
+const removeBtns = document.getElementsByClassName('removeBtns');
+console.log(removeBtns);
 
 commentBtn.addEventListener('click', async () => {
     if (!checkInput) {
@@ -59,3 +61,20 @@ function addMessageToDOM(sender, tekst, createDate) {
     messagesContainer.appendChild(banner);
     messagesContainer.appendChild(message);
 }
+
+Array.from(removeBtns).forEach(button =>{
+    button.addEventListener('click', async (event)=>{
+        event.preventDefault();
+
+        const messageId = button.getAttribute('data-id');
+        const response = await fetch(`/chats/messages/${messageId}`, {
+            method: "DELETE",
+        })
+        const result = await response.json();
+        if(!result.ok){
+            throw new Error(`Fejl: ${result.message}`);
+        }else{
+            window.location.href = '/'
+        }
+    })
+})
