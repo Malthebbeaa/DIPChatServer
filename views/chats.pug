@@ -2,6 +2,9 @@ html
     head 
         title Chat
         link(rel="stylesheet", href="/css/chats.css")
+        script.
+            const chatId = "#{chat.id}";
+            const currentUser = "#{user.username}";
     body 
         header 
             h1= ChatForum
@@ -17,6 +20,10 @@ html
                 .overskrift 
                     h2= chat.subject
                     p= chat.initialMessage
+            .inputContainer
+                textarea(name="", id="kommentar") 
+                br
+                button(type="button", id="commentBtn")="Kommentér"
 
             .messages
                 each message in messages
@@ -27,3 +34,5 @@ html
                     .message
                         p= message.text
 
+    script(src="/chats.js") 
+    

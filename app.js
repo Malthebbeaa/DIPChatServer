@@ -3,6 +3,7 @@ import express, { urlencoded } from 'express';
 import session from 'express-session';
 import { routes } from './assets/js/routes.js';
 import { addUserToFile } from './assets/js/registerLogic.js'
+import { handleNewMessage } from './assets/js/messageLogic.js'
 import crypto from 'crypto'
 import {v4 as uuidv4} from 'uuid'
 
@@ -129,6 +130,23 @@ app.get('/chats/messages/:id', (request, response) => {
             response.render('uniqueMessage', {chat: chat, message: message})
         }
     })
+})
+
+app.post('/chats/message', (request, response) => {
+    const {chatId, sender, tekst} = request.body;
+
+    const chat = chats.find(chat => chat.id === chatId);
+
+    const message = {
+        id: uuidv4(),
+        sender: sender,
+        text: tekst,
+        createDate: new Date().toISOString(),
+        chatId: chatId
+    };
+
+    handleNewMessage(message, chatId, './FILES/chats.json', 'utf-8')
+
 })
 
 function checkuserCredentials(username, password) {
