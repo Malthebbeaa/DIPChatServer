@@ -148,14 +148,13 @@ app.delete('/chats/messages/:id', (request, response) => {
 })
 
 app.post('/chats/message', (request, response) => {
-    const {chatId, sender, tekst} = request.body;
-
+    const {chatId, sender, tekst, createDate} = request.body;
 
     const message = {
         id: uuidv4(),
         sender: sender,
         text: tekst,
-        createDate: new Date().toISOString(),
+        createDate: createDate,
         chatId: chatId
     };
 
