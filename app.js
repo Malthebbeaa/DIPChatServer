@@ -135,7 +135,6 @@ app.get('/chats/messages/:id', (request, response) => {
 app.post('/chats/message', (request, response) => {
     const {chatId, sender, tekst} = request.body;
 
-    const chat = chats.find(chat => chat.id === chatId);
 
     const message = {
         id: uuidv4(),
@@ -147,6 +146,9 @@ app.post('/chats/message', (request, response) => {
 
     handleNewMessage(message, chatId, './FILES/chats.json', 'utf-8')
 
+    response.status(200).send({
+        ok:true
+    })
 })
 
 function checkuserCredentials(username, password) {

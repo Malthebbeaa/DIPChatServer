@@ -1,71 +1,86 @@
 [
-    {
+  {
     "id": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7",
     "subject": "Hello World",
     "createDate": "2025-04-23T12:55:07.074Z",
     "owner": "Anders",
     "initialMessage": "Er Hello World det rette at skrive første gang man koder?",
-    "messages": [] 
-    },
-    {
+    "messages": [
+      {
+        "id": "33058cb6-da1c-4504-b73b-9db3da04a43f",
+        "sender": "Malthe",
+        "text": " ja",
+        "createDate": "2025-04-29T13:13:18.371Z",
+        "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
+      },
+      {
+        "id": "ef33802d-24c6-4b22-b97f-5f67f4767086",
+        "sender": "Malthe",
+        "text": " nej",
+        "createDate": "2025-04-29T13:18:00.651Z",
+        "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
+      }
+    ]
+  },
+  {
     "id": "b7e86bdb-2fcd-4280-887d-3fd1742b764b",
     "subject": "Test",
     "createDate": "2025-04-23T12:55:07.074Z",
-    "owner": "Malthe", 
+    "owner": "Malthe",
     "initialMessage": "Vi tester lige om man kan skrive",
     "messages": [
-        {
-            "id": "11057151-5ed5-455d-846a-836c79cd8ef7",
-            "sender": "Malthe",
-            "text": "Første besked fra Malthe",
-            "createDate": "2025-04-23T12:55:07.074Z",
-            "chatId": "b7e86bdb-2fcd-4280-887d-3fd1742b764b"
-        },
-        {
-            "id": "d30648ec-f02b-41b4-a8c2-f891425133e4",
-            "sender": "Anders",
-            "text": "Første besked fra Anders",
-            "createDate": "2025-04-23T12:55:07.074Z",
-            "chatId": "b7e86bdb-2fcd-4280-887d-3fd1742b764b"
-        },
-        {
-            "id": "45bb596d-6335-4ce0-bc79-118e30e5fc37",
-            "sender": "Malthe",
-            "text": "Endnu en besked fra Malthe",
-            "createDate": "2025-04-28T09:53:04.023Z",
-            "chatId":"b7e86bdb-2fcd-4280-887d-3fd1742b764b"
-        }
+      {
+        "id": "11057151-5ed5-455d-846a-836c79cd8ef7",
+        "sender": "Malthe",
+        "text": "Første besked fra Malthe",
+        "createDate": "2025-04-23T12:55:07.074Z",
+        "chatId": "b7e86bdb-2fcd-4280-887d-3fd1742b764b"
+      },
+      {
+        "id": "d30648ec-f02b-41b4-a8c2-f891425133e4",
+        "sender": "Anders",
+        "text": "Første besked fra Anders",
+        "createDate": "2025-04-23T12:55:07.074Z",
+        "chatId": "b7e86bdb-2fcd-4280-887d-3fd1742b764b"
+      },
+      {
+        "id": "45bb596d-6335-4ce0-bc79-118e30e5fc37",
+        "sender": "Malthe",
+        "text": "Endnu en besked fra Malthe",
+        "createDate": "2025-04-28T09:53:04.023Z",
+        "chatId": "b7e86bdb-2fcd-4280-887d-3fd1742b764b"
+      }
     ]
-    },
-    {
+  },
+  {
     "id": "552a2b20-948f-46d5-bd70-badad87b8070",
     "subject": "Nyt emne",
     "createDate": "2025-04-23T12:55:07.074Z",
-    "owner": "Malthe", 
-    "initialMessage": "Vi prøver lige med et nyt emne her", 
+    "owner": "Malthe",
+    "initialMessage": "Vi prøver lige med et nyt emne her",
     "messages": [
-        {
-            "id": "bbe8b075-cbd5-44f6-ba19-ea2144847dc9",
-            "sender": "Malthe",
-            "text": "Hej",
-            "createDate": "2025-04-23T12:55:07.074Z",
-            "chatId": "552a2b20-948f-46d5-bd70-badad87b8070"
-        },
-        {
-            "id": "472b6a4d-44b3-4fc1-8833-0fa168c2803d",
-            "sender": "Anders",
-            "text": "Hej",
-            "createDate": "2025-04-23T12:55:07.074Z",
-            "chatId": "552a2b20-948f-46d5-bd70-badad87b8070"
-        }
-    ]
-    },
-    {
-        "id": "f54facd9-335e-48b4-9aa6-b472fcf82b00",
-        "subject": "Det er ikke champagne, alt hvad der bobler",
+      {
+        "id": "bbe8b075-cbd5-44f6-ba19-ea2144847dc9",
+        "sender": "Malthe",
+        "text": "Hej",
         "createDate": "2025-04-23T12:55:07.074Z",
-        "owner": "Jeppe K", 
-        "initialMessage": "Jeg må indrømme, at jeg har det lidt anstrengt med begrebet ”bobler”. På en helaftensmenu på en restaurant, det store udtræk med alt, hvad huset formår, altid en rejse ind i et ”univers”, hvor man skal overgive sig til alle vidunderlighederne formedelst mange penge, kan man regne med, at begrebet bobler dækker over profit.", 
-        "messages": []
-        }
+        "chatId": "552a2b20-948f-46d5-bd70-badad87b8070"
+      },
+      {
+        "id": "472b6a4d-44b3-4fc1-8833-0fa168c2803d",
+        "sender": "Anders",
+        "text": "Hej",
+        "createDate": "2025-04-23T12:55:07.074Z",
+        "chatId": "552a2b20-948f-46d5-bd70-badad87b8070"
+      }
+    ]
+  },
+  {
+    "id": "f54facd9-335e-48b4-9aa6-b472fcf82b00",
+    "subject": "Det er ikke champagne, alt hvad der bobler",
+    "createDate": "2025-04-23T12:55:07.074Z",
+    "owner": "Jeppe K",
+    "initialMessage": "Jeg må indrømme, at jeg har det lidt anstrengt med begrebet ”bobler”. På en helaftensmenu på en restaurant, det store udtræk med alt, hvad huset formår, altid en rejse ind i et ”univers”, hvor man skal overgive sig til alle vidunderlighederne formedelst mange penge, kan man regne med, at begrebet bobler dækker over profit.",
+    "messages": []
+  }
 ]
