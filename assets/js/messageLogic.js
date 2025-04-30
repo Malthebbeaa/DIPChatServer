@@ -18,13 +18,13 @@ async function handleNewMessage(message, chatId, filePath) {
     }
 }
 
-async function deleteMessage(message, chatId, filePath){
+async function deleteMessage(messageIndex, chatId, filePath){
     try{
         const data = await fs.readFile(filePath, 'utf8');
         const chats = JSON.parse(data);
         const chat = chats.find(chat => chat.id === chatId);
 
-        chat.messages.pop(message);
+        chat.messages.splice(messageIndex, 1);
 
         await fs.writeFile(filePath, JSON.stringify(chats, null, 2))
     } catch (error) {

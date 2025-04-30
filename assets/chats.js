@@ -67,14 +67,18 @@ Array.from(removeBtns).forEach(button =>{
         event.preventDefault();
 
         const messageId = button.getAttribute('data-id');
-        const response = await fetch(`/chats/messages/${messageId}`, {
+        const chatId = button.getAttribute('data-chatId');
+        const response = await fetch(`/chats/messages/${messageId}?chatId=${chatId}`, {
             method: "DELETE",
+            body: JSON.stringify({
+                chatId: chatId
+            })
         })
         const result = await response.json();
         if(!result.ok){
             throw new Error(`Fejl: ${result.message}`);
         }else{
-            window.location.href = '/'
+            window.location.href = result.redirect;
         }
     })
 })

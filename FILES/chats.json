@@ -37,17 +37,17 @@
     "initialMessage": "Vi tester lige om man kan skrive",
     "messages": [
       {
-        "id": "11057151-5ed5-455d-846a-836c79cd8ef7",
-        "sender": "Malthe",
-        "text": "Første besked fra Malthe",
-        "createDate": "2025-04-23T12:55:07.074Z",
+        "id": "1696ac5e-514f-494e-923c-7db2c328cf48",
+        "sender": "Anders",
+        "text": " Det kan man godt men opdatering fungerer ikke ordentligt",
+        "createDate": "2025-04-30T18:13:28.022Z",
         "chatId": "b7e86bdb-2fcd-4280-887d-3fd1742b764b"
       },
       {
-        "id": "d30648ec-f02b-41b4-a8c2-f891425133e4",
+        "id": "4b7d8b7a-04f4-4f6b-bd43-f96a7068fa8b",
         "sender": "Anders",
-        "text": "Første besked fra Anders",
-        "createDate": "2025-04-23T12:55:07.074Z",
+        "text": "Besked der skal blive",
+        "createDate": "2025-04-30T18:19:20.061Z",
         "chatId": "b7e86bdb-2fcd-4280-887d-3fd1742b764b"
       }
     ]
@@ -58,7 +58,15 @@
     "createDate": "2025-04-23T12:55:07.074Z",
     "owner": "Malthe",
     "initialMessage": "Vi prøver lige med et nyt emne her",
-    "messages": []
+    "messages": [
+      {
+        "id": "46a81216-a8cf-4293-8d7b-28fb607ad82a",
+        "sender": "Anders",
+        "text": " Og en ny kommentar",
+        "createDate": "2025-04-30T18:14:00.633Z",
+        "chatId": "552a2b20-948f-46d5-bd70-badad87b8070"
+      }
+    ]
   },
   {
     "id": "f54facd9-335e-48b4-9aa6-b472fcf82b00",

@@ -35,7 +35,7 @@ html
                         p= message.text
                     if user.username == message.sender && user.userlevel > 1      
                         button(type="button", id="editBtn") Rediger
-                        button(type="button", class="removeBtns", data-id=message.id) Slet
+                        button(type="button", class="removeBtns", data-id=message.id, data-chatId=message.chatId) Slet
 
     script(src="/chats.js") 
     

@@ -13,7 +13,7 @@ const app = express();
 const usersPath = "./FILES/users.json";
 let usersJson = await fs.readFile(usersPath, 'utf-8')
 const users = JSON.parse(usersJson); //Parse fra JSON til JS
-const chats = JSON.parse(await fs.readFile('./FILES/chats.json', 'utf-8')); //Parse fra JSON til JS
+let chats = JSON.parse(await fs.readFile('./FILES/chats.json', 'utf-8')); //Parse fra JSON til JS
 
 export {chats, users};
 //middleware
@@ -132,22 +132,25 @@ app.get('/chats/messages/:id', (request, response) => {
     })
 })
 
-app.delete('/chats/messages/:id', (request, response) => {
+app.delete('/chats/messages/:id', async (request, response) => {
     const id = request.params.id;
+    const chatId = request.query.chatId;
 
-    chats.forEach(chat => {
-        const message = chat.messages.find(message => message.id == id);
-        if(message) {
-            deleteMessage(message, chat.id, './FILES/chats.json', 'utf-8')
+    for (const chat of chats) {
+        const messageIndex = chat.messages.findIndex(message => message.id == id);
+        if (messageIndex !== -1) {
+            await deleteMessage(messageIndex, chat.id, './FILES/chats.json');
         }
-    })
+    }
+    updateChats('./FILES/chats.json');
     response.json({
         status: 'ok',
         ok: true,
+        redirect: '/chats/' + chatId
     })
 })
 
-app.post('/chats/message', (request, response) => {
+app.post('/chats/message', async (request, response) => {
     const {chatId, sender, tekst, createDate} = request.body;
 
     const message = {
@@ -158,8 +161,8 @@ app.post('/chats/message', (request, response) => {
         chatId: chatId
     };
 
-    handleNewMessage(message, chatId, './FILES/chats.json', 'utf-8')
-
+    await handleNewMessage(message, chatId, './FILES/chats.json', 'utf-8')
+    updateChats('./FILES/chats.json');
     response.status(200).send({
         ok:true
     })
@@ -207,4 +210,13 @@ app.get('/users/:id/messages', (request, response)=>{
 
 function findUserChats(user){
     return chats.flatMap(chat => chat.messages.filter((u)=> u.sender == user.username))
+}
+
+async function updateChats(filePath) {
+    try {
+        const data = await fs.readFile(filePath, 'utf-8');
+        chats = JSON.parse(data);
+    } catch (error) {
+        console.error("Fejl under opdatering af chats:", error);
+    }
 }
