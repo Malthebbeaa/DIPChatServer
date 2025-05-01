@@ -4,6 +4,7 @@ import session from 'express-session';
 import { routes } from './src/routes/routes.js';
 import { addUserToFile } from './src/controllers/registerLogic.js'
 import { handleNewMessage, deleteMessage , handleEditMessage} from './src/controllers/messageLogic.js'
+import { handleEditUserLevel } from './src/controllers/userLogic.js'
 import crypto from 'crypto'
 import {v4 as uuidv4} from 'uuid'
 import { ok } from 'assert';
@@ -221,8 +222,14 @@ app.get('/users/:id/messages', (request, response)=>{
 })
 
 app.put('/users/:id', (request, response) =>{
-     
-})
+    const {newUserLevel, user} = request.body;
+    handleEditUserLevel(newUserLevel, user,'./FILES/users.json');
+
+    response.status(200).send({
+        ok:true,
+        message: "der er ændret i userlevel"
+    })
+})     
 
 
 function findUserChats(user){

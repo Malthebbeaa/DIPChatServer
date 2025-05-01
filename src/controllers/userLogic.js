@@ -1,25 +1,19 @@
-const editUserLevelBtn = document.getElementsByClassName('editULevelBtn')
+import fs from 'fs/promises';
 
-editUserLevelBtn.addEventListener('click', async (event) =>{
-    event.preventDefault();
-    let newUserLevel = prompt("Indtast nyt Userlevel")
+export {handleEditUserLevel}
 
-    const response = await fetch('/users/userId',{
-        method: "PUT",
-        headers:{
-            "Content-Type" : "application/json"
-        },
-        body: JSON.stringify({
-            newUserLevel: newUserLevel,
-            user: userId
-        })
-    })
-    const result = await response.json();
+async function handleEditUserLevel(newUserLevel, userId, filePath) {
+    try {
+        const data = await fs.readFile(filePath, 'utf8');
+        const users = JSON.parse(data);
+        const user = users.find(user => user.id === userId);
 
-    if(!result.ok){
-        throw new Error(`Fejl: ${result.message}`);
-    } else{
-        window.location.href = result.redirect;
+        user.userlevel = newUserLevel;
+
+        await fs.writeFile(filePath, JSON.stringify(users, null, 2));
+
+    } catch (error) {
+        console.error(error);
     }
-})
+}
 

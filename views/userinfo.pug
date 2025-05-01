@@ -3,7 +3,7 @@ html
         link(rel="stylesheet", href="/css/styles.css")
         script.
             const userLevel = "#{userInfo.userlevel}" 
-            const userId = "#{userInfo.userlevel}"
+            const userId = "#{userInfo.id}"
     body
         header
             include includes/header
@@ -13,9 +13,9 @@ html
             .post-content
                 -const userDato = new Intl.DateTimeFormat('da-DK').format(new Date(userInfo.dateCreated))
                 p= "User created: "  + userDato
-                p= "User Level: " + userInfo.userlevel
+                p.userlevel= "User Level: " + userInfo.userlevel
                 a.button(href="/users/" + userInfo.username + "/messages") Messages
                 button(type="button" onclick="history.back()") Tilbage
                 if user.userlevel == 3
                     button(type="button", class="editULevelBtn") Edit userlevel
-    script(src="/js/userLogic.js") 
+    script(src="/users.js") 
