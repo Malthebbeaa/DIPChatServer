@@ -2,6 +2,7 @@ const createSubjectBtn = document.getElementById("createSubjectBtn");
 const subjectDescriptionInput = document.getElementById("description-input");
 const subjectInput = document.getElementById("subject-input");
 
+
 createSubjectBtn.addEventListener("click", async (event) =>{
     event.preventDefault();
     const response = await fetch("/createsubject", {
@@ -23,4 +24,5 @@ createSubjectBtn.addEventListener("click", async (event) =>{
         alert("Chat er oprettet")
         window.location.href = "/"
     }
-}) 
+})
+

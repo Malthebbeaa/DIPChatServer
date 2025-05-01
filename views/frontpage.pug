@@ -10,6 +10,7 @@ html
     .container
       if knownUser
         h2 Emner
+        -let index = 0;
         each chat in chats 
           .post
             .post-header 
@@ -23,7 +24,8 @@ html
             .post-footer
               -const subjectCreateDato = new Intl.DateTimeFormat('da-DK').format(new Date(chat.createDate))
               span #{subjectCreateDato}
-              a(href="/chats/" + chat.id) Kommenter
+              if user.userlevel > 1
+                button(type="Button", class="removeSubjectBtns", data-subject-id=chat.id) Slet emne
         if user.userlevel > 1
           a.button(href="/createsubject") Opret emne
       else
@@ -31,3 +33,4 @@ html
         h3 Log ind eller registrer dig
         a.button(href="/login") Login
         a.button(href="/register") Registrer dig
+  script(src="/removesubject.js")

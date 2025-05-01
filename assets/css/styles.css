@@ -172,17 +172,6 @@ a.chatLink {
     color: #777;
 }
 
-.post-footer a {
-    text-decoration: none;
-    color: #226288;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.post-footer a:hover {
-    color: #4CAF50;
-}
-
 a.owner {
     font-weight: bold;
     color: #777;
@@ -255,4 +244,14 @@ input.emne{
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1rem;
+}
+
+button.removeSubjectBtns{
+    cursor: pointer;
+    color: #226288;
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-decoration: none;
 }

@@ -204,11 +204,11 @@
     ]
   },
   {
-    "id": "4f14e8fe-d81b-4d64-a2df-3d6ca0117959",
-    "subject": "Et forsøg mere :(",
-    "createDate": "2025-05-01T16:20:08.372Z",
+    "id": "2dfa008f-3772-44f1-9d2d-55f7e3c85b65",
+    "subject": "Nu virker både opret og slet emne",
+    "createDate": "2025-05-01T17:16:37.123Z",
     "owner": "Anders",
-    "initialMessage": "1234",
+    "initialMessage": "Det hele virker nu",
     "messages": []
   }
 ]

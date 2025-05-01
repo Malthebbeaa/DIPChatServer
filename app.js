@@ -3,7 +3,7 @@ import express, { urlencoded } from 'express';
 import session from 'express-session';
 import { routes } from './src/routes/routes.js';
 import { addUserToFile } from './src/controllers/registerLogic.js'
-import { handleNewMessage, deleteMessage , handleEditMessage, handleNewSubject} from './src/controllers/messageLogic.js'
+import { handleNewMessage, deleteMessage , handleEditMessage, handleNewSubject, deleteSubject} from './src/controllers/messageLogic.js'
 import { handleEditUserLevel } from './src/controllers/userLogic.js'
 import crypto from 'crypto'
 import {v4 as uuidv4} from 'uuid'
@@ -251,6 +251,20 @@ app.post('/createsubject', (request, response) => {
         message: "chat er oprettet",
     })
     updateChats();
+})
+
+app.delete('/deletesubject/:id', async (request, response) => {
+    const id = request.params.id;
+
+    const chatIndex = chats.findIndex(chat => chat.id == id);
+    if (chatIndex !== -1) {
+        await deleteSubject(chatIndex, './FILES/chats.json');
+    }
+    updateChats('./FILES/chats.json');
+    response.json({
+        status: 'ok',
+        ok: true,
+    })
 })
 
 function findUserChats(user){
