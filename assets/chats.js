@@ -53,7 +53,7 @@ Array.from(removeBtns).forEach(button =>{
         if(!result.ok){
             throw new Error(`Fejl: ${result.message}`);
         }else{
-            window.location.href = '/'
+            window.location.href = result.redirect
         }
     })
 })
