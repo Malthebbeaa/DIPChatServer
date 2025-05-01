@@ -1,9 +1,9 @@
 import fs from 'fs/promises';
 import express, { urlencoded } from 'express';
 import session from 'express-session';
-import { routes } from './assets/js/routes.js';
-import { addUserToFile } from './assets/js/registerLogic.js'
-import { handleNewMessage, deleteMessage , handleEditMessage} from './assets/js/messageLogic.js'
+import { routes } from './src/routes/routes.js';
+import { addUserToFile } from './src/controllers/registerLogic.js'
+import { handleNewMessage, deleteMessage , handleEditMessage} from './src/controllers/messageLogic.js'
 import crypto from 'crypto'
 import {v4 as uuidv4} from 'uuid'
 import { ok } from 'assert';
@@ -118,8 +118,10 @@ app.post('/login', (request, response) => {
 
 
 app.get('/chats/:id', (request, response) => {
+    updateChats();
     const chat = chats.find(chat => chat.id === request.params.id);
     response.render('chats', {chat: chat, messages: chat.messages});
+    
 })
 
 
@@ -151,13 +153,13 @@ app.delete('/chats/messages/:id', async (request, response) => {
 })
 
 app.post('/chats/message', async (request, response) => {
-    const {chatId, sender, tekst, createDate} = request.body;
-
+    const {chatId, sender, tekst} = request.body;
+    const now = new Date();
     const message = {
         id: uuidv4(),
         sender: sender,
         text: tekst,
-        createDate: createDate,
+        createDate: now.toISOString(),
         chatId: chatId
     };
 
@@ -165,6 +167,7 @@ app.post('/chats/message', async (request, response) => {
 
     response.status(200).send({
         ok:true,
+        message: message
     })
 })
 
@@ -226,9 +229,9 @@ function findUserChats(user){
     return chats.flatMap(chat => chat.messages.filter((u)=> u.sender == user.username))
 }
 
-async function updateChats(filePath) {
+async function updateChats() {
     try {
-        const data = await fs.readFile(filePath, 'utf-8');
+        const data = await fs.readFile('./FILES/chats.json', 'utf-8');
         chats = JSON.parse(data);
     } catch (error) {
         console.error("Fejl under opdatering af chats:", error);

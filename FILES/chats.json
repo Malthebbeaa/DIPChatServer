@@ -7,10 +7,73 @@
     "initialMessage": "Er Hello World det rette at skrive første gang man koder?",
     "messages": [
       {
-        "id": "ef33802d-24c6-4b22-b97f-5f67f4767086",
+        "id": "8e55cff8-35df-4c38-be24-e95d8c7de508",
         "sender": "Malthe",
-        "text": "jada",
-        "createDate": "2025-04-29T13:18:00.651Z",
+        "text": "nej ",
+        "createDate": "2025-05-01T07:47:19.357Z",
+        "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
+      },
+      {
+        "id": "f09d43dd-2818-4334-8ab6-0a77f52af71a",
+        "sender": "Malthe",
+        "text": " jo",
+        "createDate": "2025-05-01T08:08:57.157Z",
+        "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
+      },
+      {
+        "id": "100420e3-cf37-4b56-9c71-78c94eef5b6d",
+        "sender": "Malthe",
+        "text": "jaja ",
+        "createDate": "2025-05-01T08:59:46.601Z",
+        "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
+      },
+      {
+        "id": "f7a18a99-9620-4193-ae24-73265ec569e5",
+        "sender": "Malthe",
+        "text": " ja",
+        "createDate": "2025-05-01T09:00:58.426Z",
+        "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
+      },
+      {
+        "id": "a34448c2-d743-4b46-b334-68b30c95f9bb",
+        "sender": "Malthe",
+        "text": " jo",
+        "createDate": "2025-05-01T09:07:45.998Z",
+        "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
+      },
+      {
+        "id": "048dd3c7-a78a-4743-b6ec-c82eb0407834",
+        "sender": "Malthe",
+        "text": " jada",
+        "createDate": "2025-05-01T09:09:02.802Z",
+        "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
+      },
+      {
+        "id": "e86c9ba7-9d83-4438-bd40-34c5d18d711c",
+        "sender": "Malthe",
+        "text": " gider snart ikke teste mere",
+        "createDate": "2025-05-01T09:09:47.691Z",
+        "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
+      },
+      {
+        "id": "4af9e48b-bbb7-42b6-84c0-ad52494a6345",
+        "sender": "Malthe",
+        "text": " nyeste kommentar",
+        "createDate": "2025-05-01T09:20:33.132Z",
+        "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
+      },
+      {
+        "id": "85dd2a56-1b23-485f-9eaa-b06857166762",
+        "sender": "Malthe",
+        "text": " hej hej",
+        "createDate": "2025-05-01T09:21:55.403Z",
+        "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
+      },
+      {
+        "id": "ae18a999-b733-4ed9-9fea-6f5066094e63",
+        "sender": "Malthe",
+        "text": " ny besked",
+        "createDate": "2025-05-01T09:44:14.270Z",
         "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
       }
     ]
@@ -21,7 +84,43 @@
     "createDate": "2025-04-23T12:55:07.074Z",
     "owner": "Malthe",
     "initialMessage": "Vi tester lige om man kan skrive",
-    "messages": []
+    "messages": [
+      {
+        "id": "1696ac5e-514f-494e-923c-7db2c328cf48",
+        "sender": "Anders",
+        "text": " Det kan man godt men opdatering fungerer ikke ordentligt",
+        "createDate": "2025-04-30T18:13:28.022Z",
+        "chatId": "b7e86bdb-2fcd-4280-887d-3fd1742b764b"
+      },
+      {
+        "id": "d86217c2-12e1-4254-8605-2559426fee86",
+        "sender": "Anders",
+        "text": " Besked der skal blive",
+        "createDate": "2025-04-30T18:51:18.102Z",
+        "chatId": "b7e86bdb-2fcd-4280-887d-3fd1742b764b"
+      },
+      {
+        "id": "62f828af-e7a1-48e3-864d-02398c66e98f",
+        "sender": "Malthe",
+        "text": "Anden besked fra Malthe",
+        "createDate": "2025-04-30T10:21:49.215Z",
+        "chatId": "b7e86bdb-2fcd-4280-887d-3fd1742b764b"
+      },
+      {
+        "id": "1dfbfba8-83ab-422f-9879-94cd12f0f88a",
+        "sender": "Malthe",
+        "text": " ny besked",
+        "createDate": "2025-05-01T09:12:25.928Z",
+        "chatId": "b7e86bdb-2fcd-4280-887d-3fd1742b764b"
+      },
+      {
+        "id": "406b3384-697f-4e04-824b-567333b94b8c",
+        "sender": "Malthe",
+        "text": " nyeste kommentar",
+        "createDate": "2025-05-01T09:24:58.773Z",
+        "chatId": "b7e86bdb-2fcd-4280-887d-3fd1742b764b"
+      }
+    ]
   },
   {
     "id": "552a2b20-948f-46d5-bd70-badad87b8070",
@@ -29,7 +128,50 @@
     "createDate": "2025-04-23T12:55:07.074Z",
     "owner": "Malthe",
     "initialMessage": "Vi prøver lige med et nyt emne her",
-    "messages": []
+    "messages": [
+      {
+        "id": "46a81216-a8cf-4293-8d7b-28fb607ad82a",
+        "sender": "Anders",
+        "text": " Og en ny kommentar",
+        "createDate": "2025-04-30T18:14:00.633Z",
+        "chatId": "552a2b20-948f-46d5-bd70-badad87b8070"
+      },
+      {
+        "id": "3eafaf9e-573f-4a3b-a054-502472faabb9",
+        "sender": "Malthe",
+        "text": " endnu en ny kommentar",
+        "createDate": "2025-05-01T08:09:26.491Z",
+        "chatId": "552a2b20-948f-46d5-bd70-badad87b8070"
+      },
+      {
+        "id": "2cf327a6-0d9a-4ec8-b245-13abcf3074ee",
+        "sender": "Malthe",
+        "text": " hej",
+        "createDate": "2025-05-01T09:36:28.326Z",
+        "chatId": "552a2b20-948f-46d5-bd70-badad87b8070"
+      },
+      {
+        "id": "b2af338d-8a78-47e9-8a6f-53031bbc28d8",
+        "sender": "Malthe",
+        "text": " hej hej",
+        "createDate": "2025-05-01T09:44:38.524Z",
+        "chatId": "552a2b20-948f-46d5-bd70-badad87b8070"
+      },
+      {
+        "id": "b7347270-d30d-4632-9e82-8a32481e5680",
+        "sender": "Malthe",
+        "text": " hej hej hej",
+        "createDate": "2025-05-01T10:01:07.509Z",
+        "chatId": "552a2b20-948f-46d5-bd70-badad87b8070"
+      },
+      {
+        "id": "5708e3cd-35de-4db8-83bc-638ed1e00098",
+        "sender": "Malthe",
+        "text": " ny",
+        "createDate": "2025-05-01T10:03:05.061Z",
+        "chatId": "552a2b20-948f-46d5-bd70-badad87b8070"
+      }
+    ]
   },
   {
     "id": "f54facd9-335e-48b4-9aa6-b472fcf82b00",
@@ -41,8 +183,15 @@
       {
         "id": "8a85a37c-3867-4522-ac17-52c925a2a4dd",
         "sender": "Anders",
-        "text": " Godt indspark",
-        "createDate": "2025-05-01T10:00:25.841Z",
+        "text": " godt indspark",
+        "createDate": "2025-04-29T18:59:07.050Z",
+        "chatId": "f54facd9-335e-48b4-9aa6-b472fcf82b00"
+      },
+      {
+        "id": "5764974c-a2d2-44d6-9680-d42e3d7878dc",
+        "sender": "Malthe",
+        "text": " jjj",
+        "createDate": "2025-05-01T09:23:15.936Z",
         "chatId": "f54facd9-335e-48b4-9aa6-b472fcf82b00"
       }
     ]

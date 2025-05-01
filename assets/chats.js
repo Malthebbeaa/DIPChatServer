@@ -4,33 +4,29 @@ const removeBtns = document.getElementsByClassName('removeBtns');
 const editBtns = document.getElementsByClassName('editBtn');
 
 commentBtn.addEventListener('click', async () => {
-    if (!checkInput) {
+    if (!checkInput()) {
         alert("En kommentar kræver tekst");
-        return;
-    }
-
-    const tekst = commentInput.value;
-    const createDate = new Date().toISOString();
-    const response = await fetch(`/chats/message`, {
-        method: "POST",
-        headers: {
-            "Content-Type" : "application/json"
-        },
-        body: JSON.stringify({
-            chatId: chatId,
-            sender: currentUser,
-            tekst: tekst,
-            createDate: createDate
-        })
-    })
-
-    const result = await response.json();
-
-    if (!result.ok) {
-        throw new Error(`Fejl: ${result.message}`);
     } else {
-        addMessageToDOM(currentUser, tekst, createDate, result.messageId);
-        commentInput.value = "";
+        const tekst = commentInput.value;
+        const postResponse = await fetch(`/chats/message`, {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({
+                chatId: chatId,
+                sender: currentUser,
+                tekst: tekst,
+            })
+        })
+
+        const postResult = await postResponse.json();
+
+        if (!postResult.ok) {
+            throw new Error(`Fejl: ${postResult.message}`);
+        } else {
+            addMessageToDOM(currentUser, postResult.message.text, postResult.message.createDate, postResult.messageId);
+        }
     }
 })
 
@@ -97,7 +93,7 @@ Array.from(editBtns).forEach(button => {
 })
 
 
-function addMessageToDOM(sender, tekst, createDate) {
+function addMessageToDOM(sender, tekst, createDate, messageId) {
     const messagesContainer = document.querySelector('.messages');
     const banner = document.createElement('div');
     banner.classList.add('banner');
@@ -114,11 +110,23 @@ function addMessageToDOM(sender, tekst, createDate) {
     const p = document.createElement('p');
     p.textContent = tekst;
 
+    const editBtn = document.createElement('button');
+    editBtn.textContent = 'Rediger';
+    editBtn.className = 'editBtn';
+    editBtn.setAttribute("data-id", messageId)
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Slet';
+    deleteBtn.className = "removeBtns";
+    deleteBtn.setAttribute("data-id",messageId);
+
     banner.appendChild(img);
     banner.appendChild(h5);
     message.appendChild(p);
     messagesContainer.appendChild(banner);
     messagesContainer.appendChild(message);
+    messagesContainer.appendChild(editBtn);
+    messagesContainer.appendChild(deleteBtn);
 }
 
 function editMessageInDOM(nyTekst, messageId) {
