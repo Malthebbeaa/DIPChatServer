@@ -1,6 +1,8 @@
 const commentBtn = document.getElementById('commentBtn');
 const commentInput = document.getElementById('kommentar');
 const removeBtns = document.getElementsByClassName('removeBtns');
+const editBtns = document.getElementsByClassName('editBtn');
+console.log(removeBtns);
 
 commentBtn.addEventListener('click', async () => {
     if (!checkInput) {
@@ -28,7 +30,7 @@ commentBtn.addEventListener('click', async () => {
     if (!result.ok) {
         throw new Error(`Fejl: ${result.message}`);
     } else {
-        addMessageToDOM(currentUser, tekst, createDate);
+        addMessageToDOM(currentUser, tekst, createDate, result.messageId);
         commentInput.value = "";
     }
 })
@@ -36,6 +38,62 @@ commentBtn.addEventListener('click', async () => {
 function checkInput() {
     return commentInput.value;
 }
+
+
+
+Array.from(removeBtns).forEach(button =>{
+    button.addEventListener('click', async (event)=>{
+        event.preventDefault();
+
+        const messageId = button.getAttribute('data-id');
+        const response = await fetch(`/chats/messages/${messageId}`, {
+            method: "DELETE",
+        })
+        const result = await response.json();
+        if(!result.ok){
+            throw new Error(`Fejl: ${result.message}`);
+        }else{
+            window.location.href = '/'
+        }
+    })
+})
+
+Array.from(editBtns).forEach(button => {
+    button.addEventListener('click', async (event) => {
+        event.preventDefault();
+
+        const newText = prompt("Ny besked");
+        const messageId = button.getAttribute('data-id');
+
+
+        if (newText) {
+            const response = await fetch(`/chats/message/${messageId}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type" : "application/json"
+                },
+                body: JSON.stringify({
+                    newText: newText,
+                    chatId: chatId,
+                    messageId: messageId
+                })
+            })
+
+            const result = await response.json();
+            console.log(result);
+
+            if(!result.ok) {
+                throw new Error(`Fejl: ${result.message}`);
+            } else {
+                console.log(newText);
+                editMessageInDOM(newText, messageId);
+            }
+
+        }
+
+    })
+})
+
 
 function addMessageToDOM(sender, tekst, createDate) {
     const messagesContainer = document.querySelector('.messages');
@@ -78,3 +136,10 @@ Array.from(removeBtns).forEach(button =>{
         }
     })
 })
+function editMessageInDOM(nyTekst, messageId) {
+    const p = document.getElementById(messageId);
+    const newP = document.createElement('p');
+    newP.id = messageId;
+    newP.textContent = nyTekst;
+    p.replaceWith(newP);
+}
