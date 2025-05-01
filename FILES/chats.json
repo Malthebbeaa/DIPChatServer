@@ -109,7 +109,7 @@
       {
         "id": "62f828af-e7a1-48e3-864d-02398c66e98f",
         "sender": "Malthe",
-        "text": "Anden besked fra Malthe",
+        "text": "Anden besked fra Malthe redigeret",
         "createDate": "2025-04-30T10:21:49.215Z",
         "chatId": "b7e86bdb-2fcd-4280-887d-3fd1742b764b"
       },
@@ -123,7 +123,7 @@
       {
         "id": "406b3384-697f-4e04-824b-567333b94b8c",
         "sender": "Malthe",
-        "text": " nyeste kommentar",
+        "text": "ny kommentar",
         "createDate": "2025-05-01T09:24:58.773Z",
         "chatId": "b7e86bdb-2fcd-4280-887d-3fd1742b764b"
       }
@@ -209,6 +209,14 @@
     "createDate": "2025-05-01T17:16:37.123Z",
     "owner": "Anders",
     "initialMessage": "Det hele virker nu",
-    "messages": []
+    "messages": [
+      {
+        "id": "4279971e-2a29-4f83-bb4b-f1a5e73d8a5e",
+        "sender": "Malthe",
+        "text": " sådan",
+        "createDate": "2025-05-01T18:58:06.347Z",
+        "chatId": "2dfa008f-3772-44f1-9d2d-55f7e3c85b65"
+      }
+    ]
   }
 ]

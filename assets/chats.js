@@ -2,6 +2,10 @@ const commentBtn = document.getElementById('commentBtn');
 const commentInput = document.getElementById('kommentar');
 const removeBtns = document.getElementsByClassName('removeBtns');
 const editBtns = document.getElementsByClassName('editBtn');
+const editModal = document.getElementById('editModal');
+const editInput = document.getElementById('editInput');
+const saveEditBtn = document.getElementById('saveEditBtn');
+const cancelEditBtn = document.getElementById('cancelEditBtn');
 
 commentBtn.addEventListener('click', async () => {
     if (!checkInput()) {
@@ -56,41 +60,53 @@ Array.from(removeBtns).forEach(button =>{
 })
 
 
+
+
 Array.from(editBtns).forEach(button => {
-    button.addEventListener('click', async (event) => {
+    button.addEventListener('click', (event) => {
         event.preventDefault();
 
-        const newText = prompt("Ny besked");
         const messageId = button.getAttribute('data-id');
+        const currentText = document.getElementById(messageId).textContent;
 
+        editInput.value = currentText;
 
-        if (newText) {
-            const response = await fetch(`/chats/message/${messageId}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type" : "application/json"
-                },
-                body: JSON.stringify({
-                    newText: newText,
-                    chatId: chatId,
-                    messageId: messageId
-                })
-            })
+        editModal.classList.remove('hidden');
 
-            const result = await response.json();
-            console.log(result);
+        saveEditBtn.onclick = async () => {
+            const newText = editInput.value;
 
-            if(!result.ok) {
-                throw new Error(`Fejl: ${result.message}`);
-            } else {
-                console.log(newText);
-                editMessageInDOM(newText, messageId);
+            if (newText) {
+                const response = await fetch(`/chats/message/${messageId}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        newText: newText,
+                        chatId: chatId,
+                        messageId: messageId
+                    })
+                });
+
+                const result = await response.json();
+
+                if (!result.ok) {
+                    throw new Error(`Fejl: ${result.message}`);
+                } else {
+                    editMessageInDOM(newText, messageId);
+                    editModal.classList.add('hidden');
+                }
             }
+        };
 
-        }
+        cancelEditBtn.onclick = () => {
+            editModal.classList.add('hidden'); 
+        };
+    });
+});
 
-    })
-})
+
 
 
 function addMessageToDOM(sender, tekst, createDate, messageId) {
@@ -131,10 +147,7 @@ function addMessageToDOM(sender, tekst, createDate, messageId) {
 
 function editMessageInDOM(nyTekst, messageId) {
     const p = document.getElementById(messageId);
-    const newP = document.createElement('p');
-    newP.id = messageId;
-    newP.textContent = nyTekst;
-    p.replaceWith(newP);
+    p.textContent = nyTekst;
 }
 
 function deleteMessageInDOM(messageId){

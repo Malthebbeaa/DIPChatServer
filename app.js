@@ -178,7 +178,8 @@ app.put('/chats/message/:id', (request, response) => {
 
     response.status(200).send({
         ok:true,
-        messageId: messageId
+        messageId: messageId,
+        newText: newText
     })
 })
 
