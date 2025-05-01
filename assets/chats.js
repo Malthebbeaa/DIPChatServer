@@ -1,7 +1,6 @@
 const commentBtn = document.getElementById('commentBtn');
 const commentInput = document.getElementById('kommentar');
 const removeBtns = document.getElementsByClassName('removeBtns');
-console.log(removeBtns);
 
 commentBtn.addEventListener('click', async () => {
     if (!checkInput) {
