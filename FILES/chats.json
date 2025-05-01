@@ -75,6 +75,13 @@
         "text": " ny besked",
         "createDate": "2025-05-01T09:44:14.270Z",
         "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
+      },
+      {
+        "id": "799a3824-5d9f-4151-a689-4fbc56d7c408",
+        "sender": "Anders",
+        "text": " Det er typisk det første program man koder",
+        "createDate": "2025-05-01T12:23:21.712Z",
+        "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
       }
     ]
   },
@@ -195,5 +202,13 @@
         "chatId": "f54facd9-335e-48b4-9aa6-b472fcf82b00"
       }
     ]
+  },
+  {
+    "id": "4f14e8fe-d81b-4d64-a2df-3d6ca0117959",
+    "subject": "Et forsøg mere :(",
+    "createDate": "2025-05-01T16:20:08.372Z",
+    "owner": "Anders",
+    "initialMessage": "1234",
+    "messages": []
   }
 ]

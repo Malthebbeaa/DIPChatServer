@@ -1,0 +1,21 @@
+html 
+    head
+        title Opret Chat
+        link(rel="stylesheet", href="/css/styles.css")
+        script.
+            const user = "#{user.username}"
+    body
+        header
+            .menu  
+                include includes/header
+        .container
+            div
+                h2 Opret Chat  
+                label.emne(for="Emne") Emne:
+                input.emne(type="text" id="subject-input" name="chatName" required)
+            div
+                label.beskrivelse(for="description") Beskrivelse:
+                textarea.description(id="description-input" name="description" rows="4" required)
+            div
+                button(type="button", id="createSubjectBtn") Opret Chat
+    script(src="/createsubject.js") 

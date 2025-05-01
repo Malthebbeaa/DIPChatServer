@@ -24,6 +24,8 @@ html
               -const subjectCreateDato = new Intl.DateTimeFormat('da-DK').format(new Date(chat.createDate))
               span #{subjectCreateDato}
               a(href="/chats/" + chat.id) Kommenter
+        if user.userlevel > 1
+          a.button(href="/createsubject") Opret emne
       else
         h2 Velkommen til ChatForum 
         h3 Log ind eller registrer dig

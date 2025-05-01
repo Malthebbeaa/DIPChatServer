@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import {v4 as uuidv4} from 'uuid'
 
 
-export {handleNewMessage, deleteMessage, handleEditMessage}
+export {handleNewMessage, deleteMessage, handleEditMessage, handleNewSubject}
 
 async function handleNewMessage(message, chatId, filePath) {
     try {
@@ -45,5 +45,18 @@ async function handleEditMessage(newText, chatId, messageId,filePath) {
 
     } catch (error) {
         console.error(error);
+    }
+}
+
+async function handleNewSubject(subject, filePath) {
+    try {
+        const data = await fs.readFile(filePath, 'utf8');
+        const chats = JSON.parse(data);
+
+        chats.push(subject);
+
+        await fs.writeFile(filePath, JSON.stringify(chats, null, 2))
+    } catch (error) {
+        console.error(error)
     }
 }

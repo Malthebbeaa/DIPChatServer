@@ -227,3 +227,32 @@ button:hover{
 button:active {
     background-color: #3e8e41;
 }
+
+textarea.description {
+    margin: 1rem;
+    width: 80%;
+    height: 200px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    resize: none;
+}
+
+label.beskrivelse, label.emne {
+    top: auto;
+    text-align: left;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+input.emne{
+    width: 80%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}

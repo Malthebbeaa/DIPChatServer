@@ -3,7 +3,7 @@ import express, { urlencoded } from 'express';
 import session from 'express-session';
 import { routes } from './src/routes/routes.js';
 import { addUserToFile } from './src/controllers/registerLogic.js'
-import { handleNewMessage, deleteMessage , handleEditMessage} from './src/controllers/messageLogic.js'
+import { handleNewMessage, deleteMessage , handleEditMessage, handleNewSubject} from './src/controllers/messageLogic.js'
 import { handleEditUserLevel } from './src/controllers/userLogic.js'
 import crypto from 'crypto'
 import {v4 as uuidv4} from 'uuid'
@@ -229,8 +229,29 @@ app.put('/users/:id', (request, response) =>{
         ok:true,
         message: "der er ændret i userlevel"
     })
-})     
+}) 
 
+app.get('/createsubject', (request, response) => {
+    response.render('createChat')
+})
+
+app.post('/createsubject', (request, response) => {
+    const subject ={
+        id: uuidv4(),
+        subject: request.body.subject,
+        createDate: new Date().toISOString(),
+        owner: request.body.user,
+        initialMessage: request.body.description,
+        messages: []
+    }
+    handleNewSubject(subject, './FILES/chats.json')
+    
+    response.status(200).send({ 
+        ok: true,
+        message: "chat er oprettet",
+    })
+    updateChats();
+})
 
 function findUserChats(user){
     return chats.flatMap(chat => chat.messages.filter((u)=> u.sender == user.username))
