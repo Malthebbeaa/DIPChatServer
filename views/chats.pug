@@ -41,5 +41,12 @@ html
                         button(type="button", class="editBtn", data-id=message.id) Rediger
                         button(type="button", class="removeBtns", data-id=message.id, data-chatId=chat.id) Slet
 
+            div#editModal.modal.hidden
+                div.modal-content
+                    h3 Rediger besked
+                    textarea#editInput
+                    button#saveEditBtn Gem
+                    button#cancelEditBtn Annuller
+
     script(src="/chats.js") 
     
