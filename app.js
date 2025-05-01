@@ -18,6 +18,7 @@ let chats = JSON.parse(await fs.readFile('./FILES/chats.json', 'utf-8')); //Pars
 
 export {chats, users};
 //middleware
+app.use(express.json());
 app.set('view engine', 'pug');
 app.use(express.static('assets'));
 app.use(session({
@@ -26,7 +27,7 @@ app.use(session({
     resave: true
 }));
 
-app.use(express.json());
+
 //app.use('/', routes)
 app.use(urlencoded({extended: true}));
 app.use(requireLogin);
@@ -135,7 +136,6 @@ app.get('/chats/messages/:id', (request, response) => {
 
 app.delete('/chats/messages/:id', async (request, response) => {
     const id = request.params.id;
-    const chatId = request.query.chatId;
 
     for (const chat of chats) {
         const messageIndex = chat.messages.findIndex(message => message.id == id);
@@ -147,7 +147,6 @@ app.delete('/chats/messages/:id', async (request, response) => {
     response.json({
         status: 'ok',
         ok: true,
-        redirect: '/chats/' + chatId
     })
 })
 

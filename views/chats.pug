@@ -36,10 +36,10 @@ html
                         p(id=message.id)= message.text
                     if user.userlevel == 3
                         button(type="button", class="editBtn", data-id=message.id) Rediger
-                        button(type="button", class="removeBtns", data-id=message.id) Slet
+                        button(type="button", class="removeBtns", data-id=message.id, data-chatId=chat.id) Slet
                     else if user.username == message.sender && user.userlevel == 2      
                         button(type="button", class="editBtn", data-id=message.id) Rediger
-                        button(type="button", class="removeBtns", data-id=message.id) Slet
+                        button(type="button", class="removeBtns", data-id=message.id, data-chatId=chat.id) Slet
 
     script(src="/chats.js") 
     

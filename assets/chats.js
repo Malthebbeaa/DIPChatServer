@@ -2,7 +2,6 @@ const commentBtn = document.getElementById('commentBtn');
 const commentInput = document.getElementById('kommentar');
 const removeBtns = document.getElementsByClassName('removeBtns');
 const editBtns = document.getElementsByClassName('editBtn');
-console.log(removeBtns);
 
 commentBtn.addEventListener('click', async () => {
     if (!checkInput) {
@@ -44,19 +43,22 @@ function checkInput() {
 Array.from(removeBtns).forEach(button =>{
     button.addEventListener('click', async (event)=>{
         event.preventDefault();
-
         const messageId = button.getAttribute('data-id');
-        const response = await fetch(`/chats/messages/${messageId}`, {
-            method: "DELETE",
-        })
-        const result = await response.json();
-        if(!result.ok){
-            throw new Error(`Fejl: ${result.message}`);
-        }else{
-            window.location.href = result.redirect
+        let acceptDelete = confirm("ønsker du at slette beskeden?")
+        if(acceptDelete){
+            let response = await fetch(`/chats/messages/${messageId}`, {
+            method: "DELETE"
+            })
+            const result = await response.json();
+            if(!result.ok){
+                throw new Error(`Fejl: ${result.message}`);
+            }else{
+                deleteMessageInDOM(messageId)
+            }
         }
     })
 })
+
 
 Array.from(editBtns).forEach(button => {
     button.addEventListener('click', async (event) => {
@@ -119,27 +121,16 @@ function addMessageToDOM(sender, tekst, createDate) {
     messagesContainer.appendChild(message);
 }
 
-Array.from(removeBtns).forEach(button =>{
-    button.addEventListener('click', async (event)=>{
-        event.preventDefault();
-
-        const messageId = button.getAttribute('data-id');
-        const chatId = button.getAttribute('data-chatId');
-        const response = await fetch(`/chats/messages/${messageId}?chatId=${chatId}`, {
-            method: "DELETE"
-        })
-        const result = await response.json();
-        if(!result.ok){
-            throw new Error(`Fejl: ${result.message}`);
-        }else{
-            window.location.href = result.redirect;
-        }
-    })
-})
 function editMessageInDOM(nyTekst, messageId) {
     const p = document.getElementById(messageId);
     const newP = document.createElement('p');
     newP.id = messageId;
     newP.textContent = nyTekst;
     p.replaceWith(newP);
+}
+
+function deleteMessageInDOM(messageId){
+    const p = document.getElementById(messageId)
+    const divParent = p.parentNode
+    divParent.remove();
 }
