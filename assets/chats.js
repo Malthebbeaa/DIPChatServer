@@ -68,10 +68,7 @@ Array.from(removeBtns).forEach(button =>{
         const messageId = button.getAttribute('data-id');
         const chatId = button.getAttribute('data-chatId');
         const response = await fetch(`/chats/messages/${messageId}?chatId=${chatId}`, {
-            method: "DELETE",
-            body: JSON.stringify({
-                chatId: chatId
-            })
+            method: "DELETE"
         })
         const result = await response.json();
         if(!result.ok){

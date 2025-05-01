@@ -207,6 +207,10 @@ app.get('/users/:id/messages', (request, response)=>{
     response.render('messages',{userInfo: userInfo, chat: chats, userchats: userchats, chatOwner: chatOwner})
 })
 
+app.put('/users/:id', (request, response) =>{
+     
+})
+
 
 function findUserChats(user){
     return chats.flatMap(chat => chat.messages.filter((u)=> u.sender == user.username))
