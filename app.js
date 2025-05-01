@@ -2,12 +2,8 @@ import fs from 'fs/promises';
 import express, { urlencoded } from 'express';
 import session from 'express-session';
 import { routes } from './src/routes/routes.js';
-import { addUserToFile } from './src/controllers/registerLogic.js'
-import { handleNewMessage, deleteMessage , handleEditMessage, handleNewSubject, deleteSubject} from './src/controllers/messageLogic.js'
-import { handleEditUserLevel } from './src/controllers/userLogic.js'
-import crypto from 'crypto'
-import {v4 as uuidv4} from 'uuid'
-import { ok } from 'assert';
+import {userRouter} from './src/routes/userroutes.js'
+import {chatRouter} from './src/routes/chatroutes.js'
 
 
 const app = express();
@@ -17,7 +13,7 @@ let usersJson = await fs.readFile(usersPath, 'utf-8')
 const users = JSON.parse(usersJson); //Parse fra JSON til JS
 let chats = JSON.parse(await fs.readFile('./FILES/chats.json', 'utf-8')); //Parse fra JSON til JS
 
-export {chats, users};
+
 //middleware
 app.use(express.json());
 app.set('view engine', 'pug');
@@ -28,8 +24,6 @@ app.use(session({
     resave: true
 }));
 
-
-//app.use('/', routes)
 app.use(urlencoded({extended: true}));
 app.use(requireLogin);
 
@@ -38,6 +32,11 @@ app.use((request, response, next) => {
     response.locals.user = request.session.user || null;
     next();
 });
+app.use('/', routes)
+routes.use('/users', userRouter);
+routes.use('/chats', chatRouter);
+
+
 
 function requireLogin(require, response, next) {
     const publicPaths = ['/', '/login', '/register']
@@ -48,229 +47,6 @@ function requireLogin(require, response, next) {
     }
 }
 
-
-//routes
-app.get('/', (request, response) => {
-    response.render("frontpage",{chats: chats, users: users});
-})
-
-app.get('/login', (request, response) => {
-    if(request.session.isLoggedIn) {
-        response.redirect('/');
-        return;
-    }
-    response.render('login', {});
-})
-
-app.get('/logout', (request, response) => {
-    request.session.destroy();
-    response.redirect('/');
-})
-
-app.get('/register', (request, response) => {
-    response.render('register');
-})
-
-app.post('/register', (request, response) => {
-    const { username, password, userlevel } = request.body;
-    request.session.isLoggedIn = true;
-    const now = new Date();
-    const salt = uuidv4();
-    const user = {
-        username: username, 
-        password: hashPassword(password, salt),
-        salt: salt,
-        dateCreated: now.toISOString(),
-        id: uuidv4(),
-        userlevel: userlevel
-    };
-
-
-    addUserToFile(user, usersPath);
-
-    response.send({
-        ok: true,
-        redirect: '/',
-        user: user
-    });
-})
-
-
-app.post('/login', (request, response) => {
-    const { username, password } = request.body;
-    const user = users.find(u => u.username === username);
-
-    if(checkuserCredentials(username, password)) {
-        request.session.isLoggedIn = true;
-        request.session.user = user;
-        response.json({
-            status: 'ok',
-            ok: true,
-            redirect: '/'
-        })
-    } else {
-        response.json({
-            ok: false,
-            message: "wrong username or password"
-        })
-    }
-
-})
-
-
-app.get('/chats/:id', (request, response) => {
-    updateChats();
-    const chat = chats.find(chat => chat.id === request.params.id);
-    response.render('chats', {chat: chat, messages: chat.messages});
-    
-})
-
-
-app.get('/chats/messages/:id', (request, response) => {
-    const id = request.params.id;
-
-    chats.forEach(chat => {
-        const message = chat.messages.find(message => message.id == id);
-        if(message) {
-            response.render('uniqueMessage', {chat: chat, message: message})
-        }
-    })
-})
-
-app.delete('/chats/messages/:id', async (request, response) => {
-    const id = request.params.id;
-
-    for (const chat of chats) {
-        const messageIndex = chat.messages.findIndex(message => message.id == id);
-        if (messageIndex !== -1) {
-            await deleteMessage(messageIndex, chat.id, './FILES/chats.json');
-        }
-    }
-    updateChats('./FILES/chats.json');
-    response.json({
-        status: 'ok',
-        ok: true,
-    })
-})
-
-app.post('/chats/message', async (request, response) => {
-    const {chatId, sender, tekst} = request.body;
-    const now = new Date();
-    const message = {
-        id: uuidv4(),
-        sender: sender,
-        text: tekst,
-        createDate: now.toISOString(),
-        chatId: chatId
-    };
-
-    handleNewMessage(message, chatId, './FILES/chats.json')
-
-    response.status(200).send({
-        ok:true,
-        message: message
-    })
-})
-
-app.put('/chats/message/:id', (request, response) => {
-    const {newText, chatId, messageId} = request.body;
-    handleEditMessage(newText, chatId, messageId,'./FILES/chats.json');
-
-    response.status(200).send({
-        ok:true,
-        messageId: messageId
-    })
-})
-
-function checkuserCredentials(username, password) {
-    let credentials = false;
-    const hashedPassword = hashPassword(password, users.find(u => u.username === username).salt);
-    let user = users.find(u => u.username === username && u.password === hashedPassword);
-
-    if(user) {
-        credentials = true;
-    }
-    return credentials;
-}
-
-// Funktion til at hashe password
-function hashPassword(password, salt) {
-    const hash = crypto.createHmac('sha256', salt);
-    hash.update(password);
-    return hash.digest('hex');
-}
-
-
-app.listen(8080, () => {
-    console.log("Lytter på 8080...");
-})
-
-app.get('/users', (request, response) =>{
-    response.render('users', {users: users})
-})
-
-app.get('/users/:id', (request, response)=> {
-    let userInfo = users.find(u => u.username == request.params.id)
-    response.render('userinfo', {userInfo: userInfo})
-})
-
-app.get('/users/:id/messages', (request, response)=>{
-    let userInfo = users.find(u => u.username == request.params.id)
-    let userchats = findUserChats(userInfo)
-    let chatOwner = chats.filter(co => co.owner == userInfo.username)
-    response.render('messages',{userInfo: userInfo, chat: chats, userchats: userchats, chatOwner: chatOwner})
-})
-
-app.put('/users/:id', (request, response) =>{
-    const {newUserLevel, user} = request.body;
-    handleEditUserLevel(newUserLevel, user,'./FILES/users.json');
-
-    response.status(200).send({
-        ok:true,
-        message: "der er ændret i userlevel"
-    })
-}) 
-
-app.get('/createsubject', (request, response) => {
-    response.render('createChat')
-})
-
-app.post('/createsubject', (request, response) => {
-    const subject ={
-        id: uuidv4(),
-        subject: request.body.subject,
-        createDate: new Date().toISOString(),
-        owner: request.body.user,
-        initialMessage: request.body.description,
-        messages: []
-    }
-    handleNewSubject(subject, './FILES/chats.json')
-    
-    response.status(200).send({ 
-        ok: true,
-        message: "chat er oprettet",
-    })
-    updateChats();
-})
-
-app.delete('/deletesubject/:id', async (request, response) => {
-    const id = request.params.id;
-
-    const chatIndex = chats.findIndex(chat => chat.id == id);
-    if (chatIndex !== -1) {
-        await deleteSubject(chatIndex, './FILES/chats.json');
-    }
-    updateChats('./FILES/chats.json');
-    response.json({
-        status: 'ok',
-        ok: true,
-    })
-})
-
-function findUserChats(user){
-    return chats.flatMap(chat => chat.messages.filter((u)=> u.sender == user.username))
-}
-
 async function updateChats() {
     try {
         const data = await fs.readFile('./FILES/chats.json', 'utf-8');
@@ -279,3 +55,11 @@ async function updateChats() {
         console.error("Fejl under opdatering af chats:", error);
     }
 }
+
+
+app.listen(8080, () => {
+    console.log("Lytter på 8080...");
+})
+
+export {updateChats}
+export {chats, users};

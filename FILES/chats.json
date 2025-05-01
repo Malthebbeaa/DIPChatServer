@@ -70,13 +70,6 @@
         "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
       },
       {
-        "id": "ae18a999-b733-4ed9-9fea-6f5066094e63",
-        "sender": "Malthe",
-        "text": " ny besked",
-        "createDate": "2025-05-01T09:44:14.270Z",
-        "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
-      },
-      {
         "id": "799a3824-5d9f-4151-a689-4fbc56d7c408",
         "sender": "Anders",
         "text": " Det er typisk det første program man koder",
@@ -170,13 +163,6 @@
         "text": " hej hej hej",
         "createDate": "2025-05-01T10:01:07.509Z",
         "chatId": "552a2b20-948f-46d5-bd70-badad87b8070"
-      },
-      {
-        "id": "5708e3cd-35de-4db8-83bc-638ed1e00098",
-        "sender": "Malthe",
-        "text": " ny",
-        "createDate": "2025-05-01T10:03:05.061Z",
-        "chatId": "552a2b20-948f-46d5-bd70-badad87b8070"
       }
     ]
   },
@@ -204,11 +190,11 @@
     ]
   },
   {
-    "id": "2dfa008f-3772-44f1-9d2d-55f7e3c85b65",
-    "subject": "Nu virker både opret og slet emne",
-    "createDate": "2025-05-01T17:16:37.123Z",
+    "id": "961d4b46-f765-4de3-ae75-2d3f549ed3a7",
+    "subject": "Så virker det hele med routes",
+    "createDate": "2025-05-01T20:39:49.997Z",
     "owner": "Anders",
-    "initialMessage": "Det hele virker nu",
+    "initialMessage": "Sådan :)",
     "messages": []
   }
 ]
