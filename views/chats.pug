@@ -33,12 +33,6 @@ html
                         img(src="/user-icon.webp")
                         h5= `${message.sender} - ${sendtDato}`
                     .message
-<<<<<<< HEAD
-                        p= message.text
-                    if user.username == message.sender && user.userlevel > 1      
-                        button(type="button", id="editBtn") Rediger
-                        button(type="button", class="removeBtns", data-id=message.id, data-chatId=message.chatId) Slet
-=======
                         p(id=message.id)= message.text
                     if user.userlevel == 3
                         button(type="button", class="editBtn", data-id=message.id) Rediger
@@ -46,7 +40,6 @@ html
                     else if user.username == message.sender && user.userlevel == 2      
                         button(type="button", class="editBtn", data-id=message.id) Rediger
                         button(type="button", class="removeBtns", data-id=message.id) Slet
->>>>>>> 3698042 (Edit message virker)
 
     script(src="/chats.js") 
     
