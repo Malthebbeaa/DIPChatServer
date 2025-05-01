@@ -22,7 +22,7 @@
   },
   "contributors": [],
   "scripts": {
-    "dev": "nodemon app.js --ignore *.json",
+    "dev": "nodemon app.js --ignore FILES/*.json",
     "test": ""
   },
   "dependencies": {
@@ -33,6 +33,6 @@
     "uuid": "^11.1.0"
   },
   "nodemonConfig": {
-    "ignore": ["FILES/*"]
+    "ignore": ["FILES/*.json"]
   }
 }

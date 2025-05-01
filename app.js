@@ -3,9 +3,10 @@ import express, { urlencoded } from 'express';
 import session from 'express-session';
 import { routes } from './assets/js/routes.js';
 import { addUserToFile } from './assets/js/registerLogic.js'
-import { handleNewMessage, deleteMessage } from './assets/js/messageLogic.js'
+import { handleNewMessage, deleteMessage , handleEditMessage} from './assets/js/messageLogic.js'
 import crypto from 'crypto'
 import {v4 as uuidv4} from 'uuid'
+import { ok } from 'assert';
 
 
 const app = express();
@@ -161,10 +162,20 @@ app.post('/chats/message', async (request, response) => {
         chatId: chatId
     };
 
-    await handleNewMessage(message, chatId, './FILES/chats.json', 'utf-8')
-    updateChats('./FILES/chats.json');
+    handleNewMessage(message, chatId, './FILES/chats.json')
+
     response.status(200).send({
-        ok:true
+        ok:true,
+    })
+})
+
+app.put('/chats/message/:id', (request, response) => {
+    const {newText, chatId, messageId} = request.body;
+    handleEditMessage(newText, chatId, messageId,'./FILES/chats.json');
+
+    response.status(200).send({
+        ok:true,
+        messageId: messageId
     })
 })
 
