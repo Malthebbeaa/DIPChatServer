@@ -4,6 +4,7 @@ import {chats, users} from '../../app.js'
 import { addUserToFile } from '../../src/controllers/registerLogic.js'
 import { handleNewSubject, deleteSubject} from './../controllers/messageLogic.js'
 import {v4 as uuidv4} from 'uuid'
+import { User } from '../models/user.js'
 import crypto from 'crypto'
 
 const routes = Router();
@@ -33,14 +34,16 @@ routes.post('/register', (request, response) => {
     const { username, password, userlevel } = request.body;
     const now = new Date();
     const salt = uuidv4();
-    const user = {
-        username: username, 
-        password: hashPassword(password, salt),
-        salt: salt,
-        dateCreated: now.toISOString(),
-        id: uuidv4(),
-        userlevel: userlevel
-    };
+    
+    const user = new User(
+        username,
+        hashPassword(password, salt),
+        salt,
+        now.toISOString(), //dateCreated
+        uuidv4(), //id
+        userlevel 
+    )
+    
     request.session.isLoggedIn = true;
     request.session.user = user;
 
