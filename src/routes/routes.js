@@ -31,7 +31,6 @@ routes.get('/register', (request, response) => {
 
 routes.post('/register', (request, response) => {
     const { username, password, userlevel } = request.body;
-    request.session.isLoggedIn = true;
     const now = new Date();
     const salt = uuidv4();
     const user = {
@@ -42,7 +41,8 @@ routes.post('/register', (request, response) => {
         id: uuidv4(),
         userlevel: userlevel
     };
-
+    request.session.isLoggedIn = true;
+    request.session.user = user;
 
     addUserToFile(user, usersPath);
 
