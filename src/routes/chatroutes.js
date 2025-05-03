@@ -45,14 +45,14 @@ chatRouter.delete('/messages/:id', async (request, response) => {
 chatRouter.post('/message', async (request, response) => {
     const {chatId, sender, tekst} = request.body;
     const now = new Date();
-    const message = {
-        id: uuidv4(),
-        sender: sender,
-        text: tekst,
-        createDate: now.toISOString(),
-        chatId: chatId
-    };
-
+    const message = new Message(
+        uuidv4(),
+        sender,
+        tekst,
+        now.toISOString(),
+        chatId
+    );
+    
     handleNewMessage(message, chatId, './FILES/chats.json')
 
     response.status(200).send({
