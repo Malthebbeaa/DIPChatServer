@@ -2,7 +2,7 @@ import {Router} from 'express';
 import { updateChats } from '../../app.js';
 import {chats, users} from '../../app.js'
 import { addUserToFile } from '../../src/controllers/registerLogic.js'
-import { handleNewSubject, deleteSubject} from './../controllers/messageLogic.js'
+import { handleNewSubject, deleteSubject} from './../controllers/subjectLogic.js'
 import {v4 as uuidv4} from 'uuid'
 import { User } from '../models/user.js'
 import crypto from 'crypto'
