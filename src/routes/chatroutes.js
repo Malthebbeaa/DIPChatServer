@@ -35,7 +35,7 @@ chatRouter.delete('/messages/:id', async (request, response) => {
             await deleteMessage(messageIndex, chat.id, './FILES/chats.json');
         }
     }
-    updateChats('./FILES/chats.json');
+    updateChats();
     response.json({
         status: 'ok',
         ok: true,

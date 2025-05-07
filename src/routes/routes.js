@@ -6,6 +6,8 @@ import { handleNewSubject, deleteSubject} from './../controllers/subjectLogic.js
 import {v4 as uuidv4} from 'uuid'
 import { User } from '../models/user.js'
 import crypto from 'crypto'
+const usersPath = "./FILES/users.json";
+
 
 const routes = Router();
 
@@ -82,7 +84,7 @@ routes.get('/createsubject', (request, response) => {
     response.render('createChat')
 })
 
-routes.post('/createsubject', (request, response) => {
+routes.post('/createsubject', async (request, response) => {
     const subject ={
         id: uuidv4(),
         subject: request.body.subject,
@@ -91,13 +93,12 @@ routes.post('/createsubject', (request, response) => {
         initialMessage: request.body.description,
         messages: []
     }
-    handleNewSubject(subject, './FILES/chats.json')
-    
+    await handleNewSubject(subject, './FILES/chats.json')
+    await updateChats();
     response.status(200).send({ 
         ok: true,
         message: "chat er oprettet",
     })
-    updateChats();
 })
 
 routes.delete('/deletesubject/:id', async (request, response) => {
@@ -107,7 +108,7 @@ routes.delete('/deletesubject/:id', async (request, response) => {
     if (chatIndex !== -1) {
         await deleteSubject(chatIndex, './FILES/chats.json');
     }
-    updateChats('./FILES/chats.json');
+    await updateChats();
     response.json({
         status: 'ok',
         ok: true,

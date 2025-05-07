@@ -9,3 +9,5 @@ class Message{
 
     messageToJSON() { return JSON.stringify(this)}
 }
+
+export {Message}

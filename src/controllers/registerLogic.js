@@ -1,5 +1,5 @@
 import fs from 'fs/promises';
-
+import { User } from '../models/user';
 
 async function addUserToFile(user, filePath) {
     try {
@@ -7,7 +7,7 @@ async function addUserToFile(user, filePath) {
         const users = JSON.parse(data);
 
         const userObject = typeof user.userToJSON === 'function'
-            ? JSON.parse(user.userToJSON())
+            ? User.fromJSONToObject(user.userToJSON())
             : user;
 
         users.push(userObject);

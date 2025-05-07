@@ -10,7 +10,7 @@ async function handleNewMessage(message, chatId, filePath) {
         const chats = JSON.parse(data);
         const chat = chats.find(chat => chat.id === chatId);
 
-        const messageObject = typeof message.messageToJSON() === 'function'
+        const messageObject = typeof message.messageToJSON === 'function'
             ? JSON.parse(message.messageToJSON())
             : message;
         
