@@ -14,11 +14,7 @@ html
                 label(for="retypepass") Retype Password: 
                 input(type="password", name="retypepass", id="retypepass", placeholder="Retype password")
                 br
-                label(for="userlevel") Userlevel: 
-                select(name="userlevel" id="userlevel")
-                    option(value="1") Niveau 1
-                    option(value="2") Niveau 2
-                    option(value="3") Niveau 3
-                br
+                label(for="userlevel") Initial Userlevel: Level 1
+                p *Wait for admin approval to rise in level*
                 button(type="button", id="submitBtn") Register
     script(src="register.js") 

@@ -2,7 +2,7 @@ const registerButton = document.getElementById("submitBtn");
 const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const retypePasswordInput = document.getElementById('retypepass');
-const userlevelSelect = document.getElementById('userlevel');
+//const userlevelSelect = document.getElementById('userlevel');
 
 registerButton.addEventListener('click', async () => {
     if (!checkInputs()) {
@@ -19,7 +19,7 @@ registerButton.addEventListener('click', async () => {
             body: JSON.stringify({
                 username: usernameInput.value,
                 password: passwordInput.value,
-                userlevel: userlevelSelect.value
+                userlevel: 1
             })
         })
         const result = await response.json();
