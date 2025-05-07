@@ -6,5 +6,7 @@ html
         header 
             include includes/header
         .container
-            h2= "Chat"
-            p= message.text
+            h2= "Besked"
+            p= "Besked: " + message.text
+            p= "Sender: " + message.sender 
+            p= "Sendt d. " + new Intl.DateTimeFormat('da-DK').format(new Date(message.createDate))

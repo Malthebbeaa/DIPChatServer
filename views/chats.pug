@@ -28,19 +28,23 @@ html
 
             .messages
                 each message in messages
-                    .messagecontainer(data-id=message.id)
+                    .messagecontainer
                         .banner
-                            - const sendtDato = new Intl.DateTimeFormat('en-US').format(new     Date(message.createDate));
+                            - const sendtDato = new Intl.DateTimeFormat('da-DK').format(new     Date(message.createDate));
                             img(src="/user-icon.webp")
                             h5= `${message.sender} - ${sendtDato}`
                         .message
                             p(id=message.id)= message.text
                         if user.userlevel == 3
-                            button(type="button", class="editBtn", data-id=message.id) Rediger
-                            button(type="button", class="removeBtns", data-id=message.id,   data-chatId=chat.id) Slet
+                            button(type="button", class="editBtn", data-id=message.id)
+                                img.edit(src="/edit-icon.webp", alt="editicon")
+                            button(type="button", class="removeBtns", data-id=message.id,   data-chatId=chat.id)
+                                img.delete(src="/delete.svg", alt="deleteicon")
                         else if user.username == message.sender && user.userlevel == 2      
-                            button(type="button", class="editBtn", data-id=message.id) Rediger
-                            button(type="button", class="removeBtns", data-id=message.id,   data-chatId=chat.id) Slet
+                            button(type="button", class="editBtn", data-id=message.id)
+                                img.edit(src="/edit-icon.webp", alt="editicon")
+                            button(type="button", class="removeBtns", data-id=message.id,   data-chatId=chat.id)
+                                img.delete(src="/delete.svg", alt="deleteicon")
 
             div#editModal.modal.hidden
                 div.modal-content

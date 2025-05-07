@@ -6,7 +6,7 @@ const editModal = document.getElementById('editModal');
 const editInput = document.getElementById('editInput');
 const saveEditBtn = document.getElementById('saveEditBtn');
 const cancelEditBtn = document.getElementById('cancelEditBtn');
-const messagecontainers = document.querySelectorAll('.messagecontainer');
+const messages = document.querySelectorAll('.message');
 
 commentBtn.addEventListener('click', async () => {
     if (!checkInput()) {
@@ -108,10 +108,10 @@ Array.from(editBtns).forEach(button => {
     });
 });
 
-messagecontainers.forEach(container => {
-    container.addEventListener('click', async () => {
-        const messageId = container.getAttribute('data-id');
-        console.log(messageId);
+Array.from(messages).forEach(message => {
+    const p = message.querySelector('p');
+    p.addEventListener('click', async () => {
+        const messageId = p.getAttribute('id');
         window.location.href = `/chats/messages/${messageId}`;
     })
 })
