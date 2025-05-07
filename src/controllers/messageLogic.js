@@ -30,12 +30,10 @@ async function deleteMessage(messageIndex, chatId, filePath){
 
         if(!chat) {
             throw new Error(`Chat med ID ${chatId} findes ikke!`);
+        } else{
+             chat.messages.splice(messageIndex, 1);
+            await fs.writeFile(filePath, JSON.stringify(chats,null, 2))
         }
-
-
-        chat.messages.splice(messageIndex, 1);
-
-        await fs.writeFile(filePath, JSON.stringify(chats, null, 2))
     } catch (error) {
         console.error(error);
         throw new Error("Kunne ikke slette beskeden. Prøv igen senere");
