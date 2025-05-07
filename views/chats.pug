@@ -28,7 +28,7 @@ html
 
             .messages
                 each message in messages
-                    .messagecontainer
+                    .messagecontainer(data-id=message.id)
                         .banner
                             - const sendtDato = new Intl.DateTimeFormat('en-US').format(new     Date(message.createDate));
                             img(src="/user-icon.webp")
