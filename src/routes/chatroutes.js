@@ -8,8 +8,8 @@ import {Message} from '../models/message.js'
 
 const chatRouter = Router();
 
-chatRouter.get('/:id', (request, response) => {
-    updateChats();
+chatRouter.get('/:id', async (request, response) => {
+    await updateChats();
     const chat = chats.find(chat => chat.id === request.params.id);
     response.render('chats', {chat: chat, messages: chat.messages});
     
@@ -29,48 +29,74 @@ chatRouter.get('/messages/:id', (request, response) => {
 
 chatRouter.delete('/messages/:id', async (request, response) => {
     const id = request.params.id;
-
-    for (const chat of chats) {
-        const messageIndex = chat.messages.findIndex(message => message.id == id);
-        if (messageIndex !== -1) {
-            await deleteMessage(messageIndex, chat.id, './FILES/chats.json');
+    try {
+        for (const chat of chats) {
+            const messageIndex = chat.messages.findIndex(message => message.id == id);
+            if (messageIndex !== -1) {
+                await deleteMessage(messageIndex, chat.id, './FILES/chats.json');
+            }
         }
+        await updateChats();
+        response.status(200).json({
+            status: 'ok',
+            ok: true,
+        })
+    } catch (error) {
+        console.error("Fejl i DELETE /message/:id", error.message);
+        response.status(500).json({
+            ok: false,
+            message: error.message
+        })
     }
-    updateChats();
-    response.json({
-        status: 'ok',
-        ok: true,
-    })
+    
 })
 
 chatRouter.post('/message', async (request, response) => {
     const {chatId, sender, tekst} = request.body;
     const now = new Date();
-    const message = new Message(
-        uuidv4(),
-        sender,
-        tekst,
-        now.toISOString(),
-        chatId
-    );
-    
-    handleNewMessage(message, chatId, './FILES/chats.json')
 
-    response.status(200).send({
-        ok:true,
-        message: message
-    })
+    try  {
+        const message = new Message(
+            uuidv4(),
+            sender,
+            tekst,
+            now.toISOString(),
+            chatId
+        );
+        
+        await handleNewMessage(message, chatId, './FILES/chats.json')
+    
+        response.status(200).send({
+            ok:true,
+            message: message
+        })
+    } catch (error) {
+        console.error("Fejl i POST /message", error.message);
+        response.status(500).json({
+            ok: false,
+            message: error.message
+        })
+    }
+    
 })
 
-chatRouter.put('/message/:id', (request, response) => {
+chatRouter.put('/message/:id', async (request, response) => {
     const {newText, chatId, messageId} = request.body;
-    handleEditMessage(newText, chatId, messageId,'./FILES/chats.json');
+    try {
+        await handleEditMessage(newText, chatId, messageId,'./FILES/chats.json');
 
-    response.status(200).send({
-        ok:true,
-        messageId: messageId,
-        newText: newText
-    })
+        response.status(200).send({
+            ok:true,
+            messageId: messageId,
+            newText: newText
+        })
+    } catch (error) {
+        console.error("Fejl i PUT /message/", error.message);
+        response.status(500).json({
+            ok: false,
+            message: error.message
+        })
+    }
 })
 
 export {chatRouter}

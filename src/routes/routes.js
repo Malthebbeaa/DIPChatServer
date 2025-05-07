@@ -33,7 +33,7 @@ routes.get('/register', (request, response) => {
     response.render('register');
 })
 
-routes.post('/register', (request, response) => {
+routes.post('/register', async (request, response) => {
     const { username, password, userlevel } = request.body;
     const now = new Date();
     const salt = uuidv4();
@@ -50,13 +50,22 @@ routes.post('/register', (request, response) => {
     request.session.isLoggedIn = true;
     request.session.user = user;
 
-    addUserToFile(user, usersPath);
+    try {
+        await addUserToFile(user, usersPath);
 
-    response.send({
-        ok: true,
-        redirect: '/',
-        user: user
-    });
+        response.status(200).json({
+            ok: true,
+            redirect: '/',
+            user: user
+        });
+    } catch (error) {
+        console.error("Fejl i /register", error.message);
+        response.status(500).json({
+            ok: false,
+            message: error.message
+        })
+    }
+    
 })
 
 
