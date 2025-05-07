@@ -61,6 +61,12 @@
         "text": " Det er typisk det første program man koder",
         "createDate": "2025-05-01T12:23:21.712Z",
         "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
+      },
+      {
+        "sender": "Anders",
+        "text": " slet besked",
+        "createDate": "2025-05-07T09:53:28.331Z",
+        "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
       }
     ]
   },
@@ -162,18 +168,17 @@
     ]
   },
   {
-    "id": "961d4b46-f765-4de3-ae75-2d3f549ed3a7",
-    "subject": "Så virker det hele med routes",
-    "createDate": "2025-05-01T20:39:49.997Z",
+    "id": "2085f87c-89c1-4826-af96-7c88bb4d7afc",
+    "subject": "Så virker routes",
+    "createDate": "2025-05-07T09:46:10.999Z",
     "owner": "Anders",
-    "initialMessage": "Sådan :)",
+    "initialMessage": "Oprettet på ny",
     "messages": [
       {
-        "id": "4279971e-2a29-4f83-bb4b-f1a5e73d8a5e",
         "sender": "Malthe",
-        "text": " sådan",
-        "createDate": "2025-05-01T18:58:06.347Z",
-        "chatId": "2dfa008f-3772-44f1-9d2d-55f7e3c85b65"
+        "text": " Sådan",
+        "createDate": "2025-05-07T09:46:31.904Z",
+        "chatId": "2085f87c-89c1-4826-af96-7c88bb4d7afc"
       }
     ]
   }

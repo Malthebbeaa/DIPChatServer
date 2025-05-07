@@ -18,13 +18,16 @@ html
                 each t in userchats
                     - const subject = chat.find(sub => sub.id == t.chatId)
 
-                    if subject.subject !== lastSubject
-                        p 
-                            strong Emne: #{subject.subject}
-                        - lastSubject = subject.subject
-                    div.flex-container
-                        p Besked: #{t.text}
-                        button.delete(type="button")
-                            img.delete(src="/delete.svg")
-                        
+                    if subject
+                        if subject.subject !== lastSubject
+                            p 
+                                strong Emne: #{subject.subject}
+                            - lastSubject = subject.subject
+                        div.flex-container
+                            p Besked: #{t.text}
+                            button.delete(type="button", class="deleteBtns", data-id=subject.id)
+                                img.delete(src="/delete.svg")
+                    else
+                        p.error Beskedens emne kunne ikke findes
             button(type="button" onclick="history.back()") Tilbage
+    script(src="/usermessages.js")
