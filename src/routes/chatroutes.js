@@ -7,8 +7,8 @@ import {v4 as uuidv4} from 'uuid'
 
 const chatRouter = Router();
 
-chatRouter.get('/:id', (request, response) => {
-    updateChats();
+chatRouter.get('/:id', async (request, response) => {
+    await updateChats();
     const chat = chats.find(chat => chat.id === request.params.id);
     response.render('chats', {chat: chat, messages: chat.messages});
     
@@ -35,7 +35,7 @@ chatRouter.delete('/messages/:id', async (request, response) => {
             await deleteMessage(messageIndex, chat.id, './FILES/chats.json');
         }
     }
-    updateChats();
+    await updateChats();
     response.json({
         status: 'ok',
         ok: true,
@@ -53,7 +53,7 @@ chatRouter.post('/message', async (request, response) => {
         chatId
     );
     
-    handleNewMessage(message, chatId, './FILES/chats.json')
+    await handleNewMessage(message, chatId, './FILES/chats.json')
 
     response.status(200).send({
         ok:true,
@@ -61,9 +61,9 @@ chatRouter.post('/message', async (request, response) => {
     })
 })
 
-chatRouter.put('/message/:id', (request, response) => {
+chatRouter.put('/message/:id', async (request, response) => {
     const {newText, chatId, messageId} = request.body;
-    handleEditMessage(newText, chatId, messageId,'./FILES/chats.json');
+    await handleEditMessage(newText, chatId, messageId,'./FILES/chats.json');
 
     response.status(200).send({
         ok:true,

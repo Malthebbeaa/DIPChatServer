@@ -21,9 +21,9 @@ userRouter.get('/:id/messages', (request, response)=>{
     response.render('messages',{userInfo: userInfo, chat: chats, userchats: userchats, chatOwner: chatOwner})
 })
 
-userRouter.put('/:id', (request, response) =>{
+userRouter.put('/:id', async (request, response) =>{
     const {newUserLevel, user} = request.body;
-    handleEditUserLevel(newUserLevel, user,'./FILES/users.json');
+    await handleEditUserLevel(newUserLevel, user,'./FILES/users.json');
 
     response.status(200).send({
         ok:true,
