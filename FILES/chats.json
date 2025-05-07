@@ -7,13 +7,6 @@
     "initialMessage": "Er Hello World det rette at skrive første gang man koder?",
     "messages": [
       {
-        "id": "8e55cff8-35df-4c38-be24-e95d8c7de508",
-        "sender": "Malthe",
-        "text": "nej, måske ",
-        "createDate": "2025-05-01T07:47:19.357Z",
-        "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
-      },
-      {
         "id": "f09d43dd-2818-4334-8ab6-0a77f52af71a",
         "sender": "Malthe",
         "text": " jo",
