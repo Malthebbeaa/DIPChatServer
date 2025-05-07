@@ -19,7 +19,12 @@ html
                     - const subject = chat.find(sub => sub.id == t.chatId)
 
                     if subject.subject !== lastSubject
-                        p="Emne: " + subject.subject
+                        p 
+                            strong Emne: #{subject.subject}
                         - lastSubject = subject.subject
-                    p="Besked: " + t.text
+                    div.flex-container
+                        p Besked: #{t.text}
+                        button.delete(type="button")
+                            img.delete(src="/delete.svg")
+                        
             button(type="button" onclick="history.back()") Tilbage

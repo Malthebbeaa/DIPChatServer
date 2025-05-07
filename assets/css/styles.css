@@ -255,3 +255,19 @@ button.removeSubjectBtns{
     font-size: 0.9rem;
     text-decoration: none;
 }
+
+button.delete{
+    background-color: transparent;
+    border: none;
+}
+
+img.delete{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    gap: 2px; /* Juster afstanden mellem elementerne */
+}
