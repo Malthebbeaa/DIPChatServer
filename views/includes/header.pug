@@ -1,5 +1,6 @@
 .menu
-    h1 ChatForum
+    a(href="/") 
+        h1 ChatForum
     if knownUser 
         a.loginButton(href="/logout") Logout
         if user && user.userlevel == 3
