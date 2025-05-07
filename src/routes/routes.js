@@ -49,13 +49,22 @@ routes.post('/register', async (request, response) => {
     request.session.isLoggedIn = true;
     request.session.user = user;
 
-    await addUserToFile(user, usersPath);
+    try {
+        await addUserToFile(user, usersPath);
 
-    response.send({
-        ok: true,
-        redirect: '/',
-        user: user
-    });
+        response.status(200).json({
+            ok: true,
+            redirect: '/',
+            user: user
+        });
+    } catch (error) {
+        console.error("Fejl i /register", error.message);
+        response.status(500).json({
+            ok: false,
+            message: error.message
+        })
+    }
+    
 })
 
 
