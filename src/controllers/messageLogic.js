@@ -1,4 +1,5 @@
 import fs from 'fs/promises';
+import {Message} from '../models/message.js';
 
 
 export {handleNewMessage, deleteMessage, handleEditMessage}
@@ -8,17 +9,16 @@ async function handleNewMessage(message, chatId, filePath) {
         const data = await fs.readFile(filePath, 'utf8');
         const chats = JSON.parse(data);
         const chat = chats.find(chat => chat.id === chatId);
-
-        const messageObject = typeof message.messageToJSON === 'function'
-            ? JSON.parse(message.messageToJSON())
-            : message;
-        
+        /*
+        let messageObject = typeof message.messageToJSON === 'function' ? JSON.parse(message.messageToJSON()) : message;
+        */
+        let messageObject = JSON.parse(Message.messageToJSON(message));
         chat.messages.push(messageObject);
 
         await fs.writeFile(filePath, JSON.stringify(chats, null, 2))
     } catch (error) {
         console.error(error);
-        throw new Error("Kunne ikke tilføje beskedn. Prøv igen senere.")
+        throw new Error("Kunne ikke tilføje beskeden. Prøv igen senere.")
     }
 }
 
