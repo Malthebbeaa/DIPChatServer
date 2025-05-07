@@ -1,18 +1,18 @@
-const createSubjectBtn = document.getElementById("createSubjectBtn");
-const subjectDescriptionInput = document.getElementById("description-input");
+const createChatBtn = document.getElementById("createChatBtn");
+const chatDescriptionInput = document.getElementById("description-input");
 const subjectInput = document.getElementById("subject-input");
 
 
-createSubjectBtn.addEventListener("click", async (event) =>{
+createChatBtn.addEventListener("click", async (event) =>{
     event.preventDefault();
-    const response = await fetch("/createsubject", {
+    const response = await fetch("/createchat", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
             subject: subjectInput.value,
-            description: subjectDescriptionInput.value,
+            description: chatDescriptionInput.value,
             user: user
         })
     })

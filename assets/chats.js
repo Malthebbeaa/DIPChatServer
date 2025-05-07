@@ -53,6 +53,7 @@ Array.from(removeBtns).forEach(button =>{
             if(!result.ok){
                 throw new Error(`Fejl: ${result.message}`);
             }else{
+                button.closest('.message')
                 deleteMessageInDOM(messageId)
             }
         }
@@ -153,5 +154,6 @@ function editMessageInDOM(nyTekst, messageId) {
 function deleteMessageInDOM(messageId){
     const p = document.getElementById(messageId)
     const divParent = p.parentNode
-    divParent.remove();
+    const messagesContainer = divParent.parentNode;
+    messagesContainer.remove();
 }

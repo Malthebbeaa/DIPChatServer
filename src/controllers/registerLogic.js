@@ -1,5 +1,5 @@
 import fs from 'fs/promises';
-import { User } from '../models/user';
+import { User } from '../models/user.js';
 
 async function addUserToFile(user, filePath) {
     try {

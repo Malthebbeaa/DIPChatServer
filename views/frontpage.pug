@@ -25,12 +25,12 @@ html
               -const subjectCreateDato = new Intl.DateTimeFormat('da-DK').format(new Date(chat.createDate))
               span #{subjectCreateDato}
               if user.userlevel > 1
-                button(type="Button", class="removeSubjectBtns", data-subject-id=chat.id) Slet emne
+                button(type="Button", class="removeChatBtns", data-chat-id=chat.id) Slet emne
         if user.userlevel > 1
-          a.button(href="/createsubject") Opret emne
+          a.button(href="/createchat") Opret emne
       else
         h2 Velkommen til ChatForum 
         h3 Log ind eller registrer dig
         a.button(href="/login") Login
         a.button(href="/register") Registrer dig
-  script(src="/removesubject.js")
+  script(src="/removechat.js")

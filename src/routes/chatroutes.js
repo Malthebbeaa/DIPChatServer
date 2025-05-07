@@ -3,6 +3,7 @@ import {chats, users} from '../../app.js'
 import { handleNewMessage, deleteMessage , handleEditMessage} from '../../src/controllers/messageLogic.js'
 import { updateChats } from '../../app.js';
 import {v4 as uuidv4} from 'uuid'
+import {Message} from '../models/message.js'
 
 
 const chatRouter = Router();

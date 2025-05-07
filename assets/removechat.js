@@ -1,12 +1,12 @@
-const removeSubjectBtns = document.getElementsByClassName("removeSubjectBtns");
+const removeChatBtns = document.getElementsByClassName("removeChatBtns");
 
-Array.from(removeSubjectBtns).forEach((button) => {
+Array.from(removeChatBtns).forEach((button) => {
     button.addEventListener("click", async (event) => {
         event.preventDefault();
-        const subjectId = button.getAttribute("data-subject-id");
+        const chatId = button.getAttribute("data-chat-id");
         let acceptDelete = confirm("ønsker du at slette emnet?")
         if(acceptDelete){
-            const response = await fetch(`/deletesubject/${subjectId}`, {
+            const response = await fetch(`/deletechat/${chatId}`, {
                 method: "DELETE"
             })
             const result = await response.json();

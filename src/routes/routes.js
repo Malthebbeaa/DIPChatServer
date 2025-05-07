@@ -5,6 +5,7 @@ import { addUserToFile } from '../../src/controllers/registerLogic.js'
 import { handleNewSubject, deleteSubject} from './../controllers/subjectLogic.js'
 import {v4 as uuidv4} from 'uuid'
 import { User } from '../models/user.js'
+import {Chat} from '../models/chat.js'
 import crypto from 'crypto'
 const usersPath = "./FILES/users.json";
 
@@ -80,20 +81,20 @@ routes.post('/login', (request, response) => {
 
 })
 
-routes.get('/createsubject', (request, response) => {
+routes.get('/createchat', (request, response) => {
     response.render('createChat')
 })
 
-routes.post('/createsubject', async (request, response) => {
-    const subject ={
-        id: uuidv4(),
-        subject: request.body.subject,
-        createDate: new Date().toISOString(),
-        owner: request.body.user,
-        initialMessage: request.body.description,
-        messages: []
-    }
-    await handleNewSubject(subject, './FILES/chats.json')
+routes.post('/createchat', async (request, response) => {
+    const chat = new Chat (
+        uuidv4(),
+        request.body.subject,
+        new Date().toISOString(),
+        request.body.user,
+        request.body.description,
+        []
+    )
+    await handleNewSubject(chat, './FILES/chats.json')
     await updateChats();
     response.status(200).send({ 
         ok: true,
@@ -101,7 +102,7 @@ routes.post('/createsubject', async (request, response) => {
     })
 })
 
-routes.delete('/deletesubject/:id', async (request, response) => {
+routes.delete('/deletechat/:id', async (request, response) => {
     const id = request.params.id;
 
     const chatIndex = chats.findIndex(chat => chat.id == id);

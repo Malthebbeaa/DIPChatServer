@@ -6,7 +6,12 @@ const userRouter = Router();
 
 
 userRouter.get('/', (request, response) =>{
+    let user = request.session.user
+    if(user.userlevel > 2){
     response.render('users', {users: users})
+    } else{
+        response.redirect('/')  
+    }
 })
 
 userRouter.get('/:id', (request, response)=> {

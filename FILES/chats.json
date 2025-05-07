@@ -63,13 +63,6 @@
         "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
       },
       {
-        "id": "85dd2a56-1b23-485f-9eaa-b06857166762",
-        "sender": "Malthe",
-        "text": " hej hej",
-        "createDate": "2025-05-01T09:21:55.403Z",
-        "chatId": "4ddd3b6e-6fd2-4d05-9ef1-3cd777cde8a7"
-      },
-      {
         "id": "799a3824-5d9f-4151-a689-4fbc56d7c408",
         "sender": "Anders",
         "text": " Det er typisk det første program man koder",
@@ -144,13 +137,6 @@
         "chatId": "552a2b20-948f-46d5-bd70-badad87b8070"
       },
       {
-        "id": "2cf327a6-0d9a-4ec8-b245-13abcf3074ee",
-        "sender": "Malthe",
-        "text": " hej",
-        "createDate": "2025-05-01T09:36:28.326Z",
-        "chatId": "552a2b20-948f-46d5-bd70-badad87b8070"
-      },
-      {
         "id": "b2af338d-8a78-47e9-8a6f-53031bbc28d8",
         "sender": "Malthe",
         "text": " hej hej",
@@ -174,17 +160,10 @@
     "initialMessage": "Jeg må indrømme, at jeg har det lidt anstrengt med begrebet ”bobler”. På en helaftensmenu på en restaurant, det store udtræk med alt, hvad huset formår, altid en rejse ind i et ”univers”, hvor man skal overgive sig til alle vidunderlighederne formedelst mange penge, kan man regne med, at begrebet bobler dækker over profit.",
     "messages": [
       {
-        "id": "8a85a37c-3867-4522-ac17-52c925a2a4dd",
+        "id": "92c5e0ad-30c3-4345-a977-ac13f2fc5dfd",
         "sender": "Anders",
-        "text": " godt indspark",
-        "createDate": "2025-04-29T18:59:07.050Z",
-        "chatId": "f54facd9-335e-48b4-9aa6-b472fcf82b00"
-      },
-      {
-        "id": "5764974c-a2d2-44d6-9680-d42e3d7878dc",
-        "sender": "Malthe",
-        "text": " jjj",
-        "createDate": "2025-05-01T09:23:15.936Z",
+        "text": " Godt indspark",
+        "createDate": "2025-05-07T08:02:16.538Z",
         "chatId": "f54facd9-335e-48b4-9aa6-b472fcf82b00"
       }
     ]

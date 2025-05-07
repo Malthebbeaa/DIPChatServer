@@ -28,18 +28,19 @@ html
 
             .messages
                 each message in messages
-                    .banner
-                        - const sendtDato = new Intl.DateTimeFormat('en-US').format(new Date(message.createDate));
-                        img(src="/user-icon.webp")
-                        h5= `${message.sender} - ${sendtDato}`
-                    .message
-                        p(id=message.id)= message.text
-                    if user.userlevel == 3
-                        button(type="button", class="editBtn", data-id=message.id) Rediger
-                        button(type="button", class="removeBtns", data-id=message.id, data-chatId=chat.id) Slet
-                    else if user.username == message.sender && user.userlevel == 2      
-                        button(type="button", class="editBtn", data-id=message.id) Rediger
-                        button(type="button", class="removeBtns", data-id=message.id, data-chatId=chat.id) Slet
+                    .messagecontainer
+                        .banner
+                            - const sendtDato = new Intl.DateTimeFormat('en-US').format(new     Date(message.createDate));
+                            img(src="/user-icon.webp")
+                            h5= `${message.sender} - ${sendtDato}`
+                        .message
+                            p(id=message.id)= message.text
+                        if user.userlevel == 3
+                            button(type="button", class="editBtn", data-id=message.id) Rediger
+                            button(type="button", class="removeBtns", data-id=message.id,   data-chatId=chat.id) Slet
+                        else if user.username == message.sender && user.userlevel == 2      
+                            button(type="button", class="editBtn", data-id=message.id) Rediger
+                            button(type="button", class="removeBtns", data-id=message.id,   data-chatId=chat.id) Slet
 
             div#editModal.modal.hidden
                 div.modal-content
