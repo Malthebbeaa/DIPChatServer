@@ -1,7 +1,10 @@
 .menu
+    
+    if knownUser 
+        a.loginButton(href="/logout")
+            img.logout(src="/logout.png", alt="logout")
+        if user && user.userlevel == 3
+            a.usersButton(href="/users")
+                img.users(src="/users.png", alt="users")
     a(href="/") 
         h1 ChatForum
-    if knownUser 
-        a.loginButton(href="/logout") Logout
-        if user && user.userlevel == 3
-            a.usersButton(href="/users") Brugere

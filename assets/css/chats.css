@@ -68,57 +68,51 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-a.button {
+button.standard, a.button {
+    cursor: pointer;
     position: relative;
     top: 1rem;
     margin: 0.5rem;
     text-decoration: none;
     display: inline-block;
     padding: 0.5rem 1rem;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 4px;
+    background-color: transparent;
+    border: none;
+    color: #226288;
     font-size: 1rem;
     text-align: center;
-    transition: background-color 0.3s ease;
 }
 
-a.button:hover, a.loginButton:hover, a.usersButton:hover {
-    background-color: #45a049;
+button.standard:hover, a.button:hover{
+    background-color: #226288;
+    color: white;
+    border-radius: 10px;
 }
 
-a.button:active, a.loginButton:active, a.usersButton:active {
-    background-color: #3e8e41;
+button.standard:active, a.button:active {
+    background-color: #226288;
+    color: white;
+    border-radius: 10px;
 }
 
 a.loginButton{
-    background-color: #4CAF50;
+    background-color: transparent;
     text-decoration: none;
-    color: white;
     cursor: pointer;    
     padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-size: 1rem;
-    text-align: center;
     transition: background-color 0.3s ease;
-
     /* Positioning */
     position: absolute;
     top: 1rem;
     right: 1rem;
-    
 }
 
 a.usersButton{
-    background-color: #4CAF50;
+    background-color: transparent;
     text-decoration: none;
-    color: white;
     cursor: pointer;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-size: 1rem;
-    text-align: center;
     position: absolute;
+    padding: 0.5rem 1rem;
     top: 1rem;
     left: 1rem;
     transition: background-color 0.3s ease;
@@ -201,4 +195,19 @@ button.editBtn{
 img.edit{
     width: 1.5rem;
     height: 1.5rem;
+}
+
+img.users, img.logout{
+    width: 3rem;
+    height: 3rem;
+}
+
+button.removeChatBtns{
+    cursor: pointer;
+    color: #226288;
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-decoration: none;
 }

@@ -14,7 +14,16 @@ Array.from(deleteBtns).forEach(button =>{
             const result = await response.json();
             if(!result.ok){
                 throw new Error(`Fejl: ${result.message}`);
+            }else{
+                let div = button.closest('.flex-container')
+                deleteMessageInDOM(div)
             }
         }
     })
 })
+
+function deleteMessageInDOM(div){
+    if(div){
+        div.remove();
+    }
+}

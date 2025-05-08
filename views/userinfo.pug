@@ -15,7 +15,7 @@ html
                 p= "User created: "  + userDato
                 p.userlevel= "User Level: " + userInfo.userlevel
                 a.button(href="/users/" + userInfo.username + "/messages") Messages
-                button(type="button" onclick="history.back()") Tilbage
+                button.standard(type="button" onclick="history.back()") Tilbage
                 if user.userlevel == 3
-                    button(type="button", class="editULevelBtn") Edit userlevel
+                    button.standard(type="button", class="editULevelBtn") Edit userlevel
     script(src="/users.js") 

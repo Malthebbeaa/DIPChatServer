@@ -16,8 +16,8 @@ let chats = JSON.parse(await fs.readFile('./FILES/chats.json', 'utf-8')); //Pars
 
 //middleware
 app.use(express.json());
-app.set('view engine', 'pug');
 app.use(express.static('assets'));
+app.set('view engine', 'pug');
 app.use(session({
     secret: 'DC732C06-B5BA-4B1A-AB1F-88C827772B01',
     saveUninitialized: true,
