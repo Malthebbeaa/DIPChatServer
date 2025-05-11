@@ -6,6 +6,8 @@ async function addUserToFile(user, filePath) {
         const data = await fs.readFile(filePath, 'utf-8');
         const users = JSON.parse(data);
 
+        user.id = user.getUserId();
+
         const userObject = typeof user.userToJSON === 'function'
             ? User.fromJSONToObject(user.userToJSON())
             : user;

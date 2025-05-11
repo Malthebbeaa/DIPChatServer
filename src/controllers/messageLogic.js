@@ -9,10 +9,10 @@ async function handleNewMessage(message, chatId, filePath) {
         const data = await fs.readFile(filePath, 'utf8');
         const chats = JSON.parse(data);
         const chat = chats.find(chat => chat.id === chatId);
-        /*
+        message.id = message.getMessageId();
+        
         let messageObject = typeof message.messageToJSON === 'function' ? JSON.parse(message.messageToJSON()) : message;
-        */
-        let messageObject = JSON.parse(Message.messageToJSON(message));
+  
         chat.messages.push(messageObject);
 
         await fs.writeFile(filePath, JSON.stringify(chats, null, 2))

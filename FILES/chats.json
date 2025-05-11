@@ -160,6 +160,14 @@
     "createDate": "2025-05-07T09:46:10.999Z",
     "owner": "Anders",
     "initialMessage": "Oprettet på ny",
-    "messages": []
+    "messages": [
+      {
+        "sender": "Anders",
+        "text": " Test af message id",
+        "createDate": "2025-05-11T18:55:50.481Z",
+        "chatId": "2085f87c-89c1-4826-af96-7c88bb4d7afc",
+        "id": "4eb72246-3c3c-4326-bb4f-51506f35150b"
+      }
+    ]
   }
 ]

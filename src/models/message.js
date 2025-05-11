@@ -8,15 +8,7 @@ class Message{
         this.chatId = chatId;
     }
     getMessageId() {return this.#id};
-    static messageToJSON(message) { 
-        return JSON.stringify({
-            id: message.getMessageId(),
-            sender: message.sender,
-            text: message.text,
-            createDate: message.createDate,
-            chatId: message.chatId
-        }) 
-    };
+    static messageToJSON(message) { return JSON.stringify(message);};
     static fromJSONToObject(json) { return JSON.parse(json) };
 }
 
