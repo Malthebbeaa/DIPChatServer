@@ -31,6 +31,7 @@ commentBtn.addEventListener('click', async () => {
             throw new Error(`Fejl: ${postResult.message}`);
         } else {
             addMessageToDOM(currentUser, postResult.message.text, postResult.message.createDate, postResult.messageId);
+            commentInput.value = "";
         }
     }
 })
@@ -128,29 +129,47 @@ function addMessageToDOM(sender, tekst, createDate, messageId) {
     const h5 = document.createElement('h5');
     h5.textContent = `${sender} - ${new Intl.DateTimeFormat('da-DK').format(new Date(createDate))}`;
 
-    const message = document.createElement('div');
-    message.classList.add('message');
+    // Message
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message');
 
     const p = document.createElement('p');
+    p.id = messageId;
     p.textContent = tekst;
+    messageDiv.appendChild(p);
 
+    // Edit button
     const editBtn = document.createElement('button');
-    editBtn.textContent = 'Rediger';
     editBtn.className = 'editBtn';
-    editBtn.setAttribute("data-id", messageId)
+    editBtn.setAttribute("data-id", messageId);
+    const editImg = document.createElement('img');
+    editImg.src = "/edit-icon.webp";
+    editImg.alt = "editicon";
+    editImg.className = "edit";
+    editBtn.appendChild(editImg);
 
+    // Delete button
     const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'Slet';
     deleteBtn.className = "removeBtns";
-    deleteBtn.setAttribute("data-id",messageId);
+    deleteBtn.setAttribute("data-id", messageId);
+    const deleteImg = document.createElement('img');
+    deleteImg.src = "/delete.svg";
+    deleteImg.alt = "deleteicon";
+    deleteImg.className = "delete";
+    deleteBtn.appendChild(deleteImg);
+
+
+    //indre container som ring om
+    const innerContainer = document.createElement('div');
+    innerContainer.className = "messagecontainer";
+    innerContainer.appendChild(banner);
+    innerContainer.appendChild(messageDiv);
+    innerContainer.appendChild(editBtn);
+    innerContainer.appendChild(deleteBtn);
 
     banner.appendChild(img);
     banner.appendChild(h5);
-    message.appendChild(p);
-    messagesContainer.appendChild(banner);
-    messagesContainer.appendChild(message);
-    messagesContainer.appendChild(editBtn);
-    messagesContainer.appendChild(deleteBtn);
+    messagesContainer.appendChild(innerContainer);
 }
 
 function editMessageInDOM(nyTekst, messageId) {
