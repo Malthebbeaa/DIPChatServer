@@ -8,6 +8,7 @@ async function addUserToFile(user, filePath) {
 
         user.id = user.getUserId();
 
+        //Tjek om det er et instans af User, hvis ja gør til plain objekt
         const userObject = typeof user.userToJSON === 'function'
             ? User.fromJSONToObject(user.userToJSON())
             : user;

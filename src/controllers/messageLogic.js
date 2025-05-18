@@ -11,6 +11,7 @@ async function handleNewMessage(message, chatId, filePath) {
         const chat = chats.find(chat => chat.id === chatId);
         message.id = message.getMessageId();
         
+        //Tjek om det er et instans af Message, hvis ja gør til plain objekt
         let messageObject = typeof message.messageToJSON === 'function' ? JSON.parse(message.messageToJSON()) : message;
   
         chat.messages.push(messageObject);

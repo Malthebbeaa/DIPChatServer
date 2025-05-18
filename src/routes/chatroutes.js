@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import {chats, users} from '../../app.js'
+import {chats} from '../../app.js'
 import { handleNewMessage, deleteMessage , handleEditMessage} from '../../src/controllers/messageLogic.js'
 import { updateChats } from '../../app.js';
 import {v4 as uuidv4} from 'uuid'

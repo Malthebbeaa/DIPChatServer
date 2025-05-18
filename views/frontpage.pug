@@ -23,7 +23,7 @@ html
               p= chat.initialMessage
             .post-footer
               -const subjectCreateDato = new Intl.DateTimeFormat('da-DK').format(new Date(chat.createDate))
-              span #{subjectCreateDato}
+              span Oprettet: d. #{subjectCreateDato}
               if user.userlevel > 1
                 button(type="Button", class="removeChatBtns", data-chat-id=chat.id) Slet emne
         if user.userlevel > 1
