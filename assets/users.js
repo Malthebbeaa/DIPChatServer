@@ -5,6 +5,7 @@ editUserLevelBtn.addEventListener('click', async (event) =>{
     event.preventDefault();
     let newUserLevel = prompt("Indtast nyt Userlevel (mellem 1-3)")
 
+    if(!newUserLevel) return;
     if(!checkNewUserlevel(Number(newUserLevel))) {
         alert("Userlevel skal være mellem 1-3!");
         return;
